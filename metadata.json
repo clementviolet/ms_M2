@@ -1,0 +1,18 @@
+{
+  "title": "Mémoire Stage M2",
+  "upload_type": "masterthesis",
+  "access_right": "open",
+  "license": "CC-BY",
+  "language": "fr",
+  "creators": [
+    {
+      "affiliation": "Université de Rennes 1",
+      "familyname": "Violet",
+      "givennames": "Clément",
+      "orcid": "0000-0001-6217-5891"
+    }
+  ],
+  "description": "Mémoire Stage M2",
+  "keywords": ["Réseaux écologiquex, Inférence de réseaux, JSDM"],
+  "notes": "https://github.com/clementviolet/ms-m2/"
+}
