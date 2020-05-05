@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo=ms_m2
+repo=ms_M2
 
 # Bibliography part
 pandoc-citeproc --bib2json ref_interaction_inference.bib > references.json
@@ -16,7 +16,7 @@ pandoc manuscript.md -s -o rendered/$repo.tex --filter pandoc-xnos --bibliograph
 
 # Create pdf file
 cd rendered
-latexmk ms_m2.tex -lualatex --file-line-error --interaction=nonstopmode
+latexmk $repo.tex -lualatex --file-line-error --interaction=nonstopmode
 
 # Cleaning up
 latexmk -c
