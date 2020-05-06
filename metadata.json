@@ -14,5 +14,6 @@
   ],
   "description": "Mémoire Stage M2",
   "keywords": ["Réseaux écologiquex, Inférence de réseaux, JSDM"],
-  "notes": "https://github.com/clementviolet/ms-m2/"
+  "notes": "https://github.com/clementviolet/ms-m2/",
+  "link-citations": true
 }
