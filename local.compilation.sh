@@ -9,10 +9,10 @@ python .assets/scripts/bibliography.py
 # Adding mandatory files
 mkdir -p rendered
 cp -r figures rendered/
-cp references.json rendered/
+mv references.json rendered/
 
 # Create tex file
-pandoc manuscript.md -s -o rendered/$repo.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
+pandoc manuscript.md -s -o rendered/$repo.tex --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
 
 # Create pdf file
 cd rendered
