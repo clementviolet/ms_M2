@@ -2,6 +2,14 @@
 
 repo=ms_M2
 
+# Fonts (use if when needed)
+
+#wget --no-check-certificate https://github.com/stipub/stixfonts/archive/master.zip
+#unzip master.zip
+#mkdir -p rendered/fonts
+#mv stixfonts-master/OTF/*.otf rendered/fonts/
+#rm -Rf stixfonts-master/ master.zip
+
 # Bibliography part
 pandoc-citeproc --bib2json ref_interaction_inference.bib > references.json
 python .assets/scripts/bibliography.py
