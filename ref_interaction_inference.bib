@@ -839,19 +839,23 @@ Probl{\`e}me pour utilisation HSMC dans herbier o{\`u} l'on suspecte une forte p
   keywords      = {Variational inference, Network inference},
 }
 
-@Article{Momal2019,
-  author        = {Rapha{\"e}lle Momal and St{\'e}phane Robin and Christophe Ambroise},
-  title         = {Tree-based Inference of Species Interaction Network from Abundance Data},
-  journal       = {arXiv},
-  year          = {2019},
-  eprint        = {1905.02452},
-  bdsk-url-1    = {https://arxiv.org/abs/1905.02452},
-  date-added    = {2019-10-29 11:06:47 +0100},
-  date-modified = {2019-10-29 11:45:12 +0100},
-  keywords      = {Tree-based inference, Network inference},
+@article{Momal_2020,
+author = {Momal, Raphaëlle and Robin, Stéphane and Ambroise, Christophe},
+title = {Tree-based inference of species interaction networks from abundance data},
+journal = {Methods in Ecology and Evolution},
+volume = {11},
+number = {5},
+pages = {621-632},
+keywords = {abundance data, covariates adjustment, EM algorithm, graphical models, matrix tree theorem, Poisson log-normal model, species interaction network},
+doi = {10.1111/2041-210X.13380},
+url = {https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/2041-210X.13380},
+eprint = {https://besjournals.onlinelibrary.wiley.com/doi/pdf/10.1111/2041-210X.13380},
+abstract = {Abstract The behaviour of ecological systems mainly relies on the interactions between the species it involves. We consider the problem of inferring the species interaction network from abundance data. To be relevant, any network inference methodology needs to handle count data and to account for possible environmental effects. It also needs to distinguish between direct interactions and indirect associations and graphical models provide a convenient framework for this purpose. A simulation study shows that the proposed methodology compares well with state-of-the-art approaches, even when the underlying graph strongly differs from a tree. The analysis of two datasets highlights the influence of covariates on the inferred network. Accounting for covariates is critical to avoid spurious edges. The proposed approach could be extended to perform network comparison or to look for missing species.},
+year = {2020}
 }
 
-@article{Norberg_2019,
+
+@article{Norberg_2020,
 	Abstract = {Abstract A large array of species distribution model (SDM) approaches have been developed for explaining and predicting the occurrences of individual species or species assemblages. Given the wealth of existing models, it is unclear which models perform best for interpolation or extrapolation of existing data sets, particularly when one is concerned with species assemblages. We compared the predictive performance of 33 variants of 15 widely applied and recently emerged SDMs in the context of multispecies data, including both joint SDMs that model multiple species together, and stacked SDMs that model each species individually combining the predictions afterwards. We offer a comprehensive evaluation of these SDM approaches by examining their performance in predicting withheld empirical validation data of different sizes representing five different taxonomic groups, and for prediction tasks related to both interpolation and extrapolation. We measure predictive performance by twelve measures of accuracy, discrimination power, calibration, and precision of predictions, for the biological levels of species occurrence, species richness, and community composition. Our results show large variation among the models in their predictive performance, especially for communities comprising many species that are rare. The results do not reveal any major trade-offs among measures of model performance; the same models performed generally well in terms of accuracy, discrimination, and calibration, and for the biological levels of individual species, species richness, and community composition. In contrast, the models that gave the most precise predictions were not well calibrated, suggesting that poorly performing models can make overconfident predictions. However, none of the models performed well for all prediction tasks. As a general strategy, we therefore propose that researchers fit a small set of models showing complementary performance, and then apply a cross-validation procedure involving separate data to establish which of these models performs best for the goal of the study. This article is protected by copyright. All rights reserved.},
 	Author = {Norberg, Anna and Abrego, Nerea and Blanchet, F. Guillaume and Adler, Frederick R. and Anderson, Barbara J. and Anttila, Jani and Ara{\'u}jo, Miguel B. and Dallas, Tad and Dunson, David and Elith, Jane and Foster, Scott D. and Fox, Richard and Franklin, Janet and Godsoe, William and Guisan, Antoine and O'Hara, Bob and Hill, Nicole A. and Holt, Robert D. and Hui, Francis K.C. and Husby, Magne and K{\aa}l{\aa}s, John Atle and Lehikoinen, Aleksi and Luoto, Miska and Mod, Heidi K. and Newell, Graeme and Renner, Ian and Roslin, Tomas and Soininen, Janne and Thuiller, Wilfried and Vanhatalo, Jarno and Warton, David and White, Matt and Zimmermann, Niklaus E. and Gravel, Dominique and Ovaskainen, Otso},
 	Date-Added = {2019-10-29 10:38:55 +0100},
@@ -1014,6 +1018,52 @@ Probl{\`e}me pour utilisation HSMC dans herbier o{\`u} l'on suspecte une forte p
   year = {2019},
   url = {https://www.R-project.org/},
   }
+
+@book{Lecointre_2001,
+  title={Classification phylog{\'e}n{\'e}tique du vivant},
+  author={Lecointre, Guillaume and Le Guyader, Herv{\'e}},
+  year={2001},
+  edition={3},
+  publisher={Belin}
+}
+
+@article{Fleiss1973,
+	author = {Joseph L. Fleiss and Jacob Cohen},
+	title ={The Equivalence of Weighted Kappa and the Intraclass Correlation Coefficient as Measures of Reliability},
+	journal = {Educational and Psychological Measurement},
+	volume = {33},
+	number = {3},
+	pages = {613-619},
+	year = {1973},
+	doi = {10.1177/001316447303300309},
+	URL = {https://doi.org/10.1177/001316447303300309},
+	eprint = {https://doi.org/10.1177/001316447303300309}
+}
+
+@Manual{Hmsc_2019,
+    title = {Hmsc: Hierarchical Model of Species Communities},
+    author = {Gleb Tikhonov and Otso Ovaskainen and Jari Oksanen and Melinda {de Jonge} and Oystein Opedal and Tad Dallas},
+    year = {2019},
+    note = {R package version 3.0-4},
+    url = {https://CRAN.R-project.org/package=Hmsc},
+}
+
+@Manual{Gllvm_2019,
+	title = {gllvm: Generalized Linear Latent Variable Models},
+    author = {Jenni Niku and Wesley Brooks and Riki Herliansyah and Francis K.C. Hui and Sara Taskinen and David I. Warton},
+    year = {2019},
+    note = {R package version 1.2.0},
+    url = {https://CRAN.R-project.org/package=gllvm},
+}
+
+@techreport{Rebent2016,
+  author    = {Derrien-Courtel, Sandrine and Androuin, Thibault and Ar Gall, Erwan and Aublet, Erwann and Bouriat, Alizé and Boyé, Aurélien and Broudin, Caroline and Catherine, Elodie and Decaris, François-Xavier and Derrien, René and Grall, Jacques and Houbin, Céline and Huber, Matthias and Le Duff, Michel and Le Gal, Aodren and Le Garrec, Vincent and Maguer, Marion and Perrier, Lucile and Thiébaut, Eric},
+  title     = {Le REBENT-II Bretagne - Surveillance du Benthos du littoral breton.},
+  year      = {2017},
+  url       = {http://www.stationmarinedeconcarneau.fr/sites/concarneau/files/atoms/files/rebent.bretagne2015-2016-rapportfinal-vf_tome1.pdf},
+  institution = {REBENT},
+  number = {Rapport final-Vf2-11/03/2019}
+}
 
 @Comment{jabref-meta: databaseType:biblatex;}
 
