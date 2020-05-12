@@ -55,6 +55,7 @@ jobs:
           cp .assets/templates/style.less rendered/css/
       - name: Build the tex file
         run: pandoc manuscript.md -s -o rendered/${{ env.repo_name }}.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
+        run: python .assets/scripts/longtablefix.py
       - name: Build Word document
         run: pandoc manuscript.md -s -o rendered/${{ env.repo_name }}.docx --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
       - name: Build the pdf
