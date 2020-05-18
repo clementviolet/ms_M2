@@ -18,7 +18,7 @@ with io.open("./rendered/ms_M2.tex", encoding="utf8") as texfile:
         text = texfile.readlines()
 
 # Add '\clearpage' at the end of the longtable env
-text = [sentence.replace('\\end{longtable}\n', '\\end{longtable}\n\\clearpage\n') for sentence in text]
+text = [sentence.replace('\\end{longtable}\n', '\\end{longtable}\n\\FloatBarrier\n') for sentence in text]
 
 # Write the result into the .Tex file.
 with io.open("./rendered/ms_M2.tex", "w", encoding="utf8") as texfile:
