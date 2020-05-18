@@ -102,6 +102,9 @@ urlcolor=black}
 \let\Oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 
+\usepackage{float}
+\floatplacement{figure}{H}
+
 %% linestreching
 $if(linestretch)$
 \usepackage{setspace}
