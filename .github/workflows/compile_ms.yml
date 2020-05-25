@@ -52,7 +52,7 @@ jobs:
         run: |
           pandoc thanks_glossary_math.md -s -o rendered/thanks_glossary_math.tex --template=.assets/templates/raw.tex
           python .assets/scripts/longtablealign.py
-          pandoc manuscript.md -s -o rendered/${{ env.repo_name }}.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
+          pandoc manuscript.md -s -o rendered/${{ env.repo_name }}.tex --include-before-body=rendered/thanks_glossary_math.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
           python .assets/scripts/longtablefix.py
       - name: Create the website
         run: |
