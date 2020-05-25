@@ -268,6 +268,26 @@ La concordance de l'avis des experts a été mesurée à l'aide du *Kappa de Fle
 
 # Resultats
 
+## Effets de l'environnement
+
+![Effets des variables environmentales sur l'abondance des différentes espèces de polychètes.](figures/beta-all-plot-2.png){#fig:effectenv}
+
+## Validation croisée
+
+### Occurence
+
+![Prédiction de l'occurence pour l'abondance corrigé par le J de Youden](figures/roc-richness-prediction-3.png){#fig:occpred}
+
+![RMSE de la richesse pour chaque méthode.](figures/rmse-pred-abundance-occurence-2.png){#fig:rmseabund}
+
+### Abondance
+
+## Résaux reconstruits
+
+![Réseau reconstruit à l'aide des probabilités moyenne de chaque méthode.](figures/mean-network-1.png){#fig:meannet}
+
+## Coûts de Calculs
+
 # Discussion
 
 # Bibliographie 
