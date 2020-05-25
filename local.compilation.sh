@@ -21,17 +21,19 @@ mv references.json rendered/
 
 # Create tex file
 echo "TeX document"
-pandoc manuscript.md -s -o rendered/$repo.tex --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
+pandoc thanks_glossary_math.md -s -o rendered/thanks_glossary_math.tex --template=.assets/templates/raw.tex
+python .assets/scripts/longtablealign.py
+pandoc manuscript.md -s -o rendered/$repo.tex --include-before-body=rendered/thanks_glossary_math.tex --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
 
 # Create html file
 echo "HTML document"
 mkdir -p rendered/css/
 cp .assets/templates/style.less rendered/css/
-pandoc manuscript.md -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --metadata-file=metadata.json --webtex
+pandoc rendered/$repo.tex -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --metadata-file=metadata.json --webtex
 
 # Create docx file
 echo "MS Word document"
-pandoc manuscript.md -s -o rendered/$repo.docx --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json
+pandoc rendered/$repo.tex -s -o rendered/$repo.docx --toc --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json
 
 # Fix the issue with longtable package
 
