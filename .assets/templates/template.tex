@@ -7,6 +7,14 @@ $if(geometry)$
 $endif$
 \usepackage{pdflscape}
 
+% Control spacing before and after titles
+\usepackage{titlesec}
+% Reduce spacing before and after the Chapter title
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename~\thechapter}{25pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titlespacing*{name=\chapter,numberless}{0pt}{-50pt}{25pt}
+
 %% Package polyglossia
 \usepackage{polyglossia}
 \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
@@ -230,10 +238,16 @@ $endif$
 %$endfor$
 %}
 
+% Roman numbering for content before toc and toc itself
+\cleardoublepage 
+\pagenumbering{roman}
+
 $if(toc)$
 \tableofcontents
 $endif$
 
+\cleardoublepage 
+\pagenumbering{arabic}
 
 $if(alignment)$
 \begin{$alignment$}
