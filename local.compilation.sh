@@ -29,11 +29,11 @@ pandoc manuscript.md -s -o rendered/$repo.tex --include-before-body=rendered/tha
 echo "HTML document"
 mkdir -p rendered/css/
 cp .assets/templates/style.less rendered/css/
-pandoc rendered/$repo.tex -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --metadata-file=metadata.json --webtex
+pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --metadata-file=metadata.json --webtex
 
 # Create docx file
 echo "MS Word document"
-pandoc rendered/$repo.tex -s -o rendered/$repo.docx --toc --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json
+pandoc thanks_glossary_math.md manuscript.md -s -o rendered/$repo.docx --toc --filter pandoc-xnos --bibliography=./rendered/references.json --metadata-file=metadata.json
 
 # Fix the issue with longtable package
 
