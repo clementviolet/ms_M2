@@ -377,6 +377,18 @@ Besoin de discuter avec vous là-dessus.
 
 # Discussion
 
+- JSDM intéressant en écologie des communautés benthiques ;
+- Choix des variables environmentales important ;
+- HMSC_hier semble être le meilleur modèle confirmant Norberg ;
+- Précision acceptable sur la prédiction de la richesse spécifique ;
+- Précision nul mais la meilleur des modèles sur l'abondance ;
+- Possibilité de l'améliorer pouvoir explicatif en ajoutant des traits, même chose pour la prédiction de l'abondance ? ;
+- Utiliser de vrais effets spatiaux et temporels pourraît être un plus ;
+- Cependant attention aux temps de calcul loooooongs.
+- Réseaux reconsrtuit intéressant. Nombre de liens identiques à travers les méthodes liés à EMTree. Comparable à la littérature en terme de connectance, mais pas en terme de nestedness. Est-ce la conséquence de la méthode ?
+- Réseau à prendre avec précaution : nécessite de bien expliquer l'environnement avec variables explicatives + ne prend pas en compte les espèces qui n'aurait pas été échantillonnés et qui causerait des liens à tord.
+- Nécessite de tester cette méthode de reconstruction avec donnés simulé pour voir comportement des différents JSDM et de la structure des réseaux qu'ils renvoient.
+
 # Bibliographie 
 
 ---
