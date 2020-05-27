@@ -100,7 +100,6 @@ $$\left(Z_i \times \lambda_j\right) \sim N\left(0, \Omega\right)$$ {#eq:lvmconst
 Et que la matrice de covariance $\Omega$ est égale à :
 
 $$\Omega = \lambda \lambda^\prime$$ {#eq:loadings}
-
 Ainsi, les *LVMs* permettent de prendre en compte des éventuelles variables explicatives manquantes tout en estimant la corrélation entre espèces. Un autre avantage des variables latentes est que l'estimation de matrice de corrélation entre espèces est plus simple que par rapport à un modèle linéaire à effets mixtes généralisés. La matrice de coordonnés des espèces ($\lambda$) dans le cas d'un *LVM* a au plus autant de colonnes que de variables latentes (+@eq:lvmconst et @eq:loadings), tandis que dans le cas d'un modèle linéaire à effets mixte généralisé celle-ci à autant de colonnes que d'espèces [@warton2015]. Ainsi, le nombre de variables latentes utilisées par le modèle est donc un paramètre crucial, puisqu'il permet de faire un compromis entre précision de la matrice de corrélation résiduelle et la réduction du temps de calcul et des degrés de libertés utilisés [@warton2015].
 
 |              *Joint species distribution model*           |     Référence     |
@@ -181,10 +180,10 @@ La communauté faunistique d’intérêt dans ce travail est celle des polychèt
 
 ### Données environnementales 
 
-Six variables environnementales ont été sélectionnées (tableau : {@tbl:3}). La salinité, la température et la vitesse des courants proviennent de la base de données publique *PREVIMER* basée sur les résultats des modèles de *MARS3D*. Le fetch a été calculé à partir des polygones terrestres disponibles dans *OpenStreetMap*. Les variables granulométriques ont été échantillonnées *in situ* (protocole détaillé dans @Boye_2017). Chaque variable environnementale a été centrée et transformée en polynôme de degrés un avant d'être utilisé par les différents modèles. 
+Six variables environnementales ont été sélectionnées (tableau : {@tbl:env}). La salinité, la température et la vitesse des courants proviennent de la base de données publique *PREVIMER* basée sur les résultats des modèles de *MARS3D*. Le fetch a été calculé à partir des polygones terrestres disponibles dans *OpenStreetMap*. Les variables granulométriques ont été échantillonnées *in situ* (protocole détaillé dans @Boye_2017). Chaque variable environnementale a été centrée et transformée en polynôme de degrés un avant d'être utilisé par les différents modèles. 
 
 |  Abréviation  |     Définition                             |    Unité    |
-| :-----------: | :----------------------------------------: | :---------: |
+| :-----------: | :----------------------------------------: | :---------- |
 |   Average     |    Fetch moyen                             |     Km      |  
 |   MO          |   Concentration en Matière organique       |   %         |
 |   SAL_sd_w    | Ecart-type de la salinité de l'eau         | PSS-78      |
@@ -192,7 +191,7 @@ Six variables environnementales ont été sélectionnées (tableau : {@tbl:3}). 
 |   CURR_mean_w | Force moyenne des courants                 | m.s^-1^     |
 |   mud         | Concentration de boue dans les sédiments   | %           |
 |   Trask_So    | Indice de Trask - Homogénéité du sédiment  | Aucune      |
-Table: Variables environnementales utilisées par tous les modèles. {#tbl:3}
+Table: Variables environnementales utilisées par tous les modèles. {#tbl:env}
 
 ## Logiciels utilisés
 
@@ -214,6 +213,15 @@ Le modèle a été créé avec le package R *PLNmodels* [@Chiquet_2019]. Le mod�
 
 Le modèle a été créé avec le package R *gllvm* [@Niku_2019; @Gllvm_2019]. Le modèle utilise une distribution négative binomiale et vingt variables latentes. 
 
+| Nom du modèle | Framework | Distribution statistique |            Nombre variables latentes            |
+| :------------ | :-------- | :----------------------- | :---------------------------------------------- |
+| HMSC_reg      | HMSC      | Poisson lognormal        | 0                                               |
+| HMSC_samp     | HMSC      | Poisson lognormal        | 1                                               |
+| HMSC_hier     | HMSC      | Poisson lognormal        | 3                                               |
+| PLN           | PLN       | Poisson lognormal        | 1                                               |
+| GLLVM         | GLLVM     | Negative binomial        | 20                                              |
+Table: Descriptif des modèles utilisés. {#tbl:summarymod}
+
 ## Reconstruction des réseaux d'interactions
 
 Les réseaux d'interactions sont reconstruits pour chaque modèle à grâce au package *EMtree*. Le principe de l'algorithme contenu dans ce package est d'inférer des interactions entre espèces en utilisant des arbres couvrants (graphes connectant tous les noeuds sans aucune boucle). La probabilité conditionnelle $P$ d'une arrête entre les espèces $j$ et $k$ est décrite dans ce modèle comme la somme des probabilités conditionnelles des arbres la contenant. Ainsi la probabilité qu'une arrête fasse partie du réseau d'intérêt est simplement sa probabilité conditionnelle moyennée par le nombre d'abers couvrant [@Momal_2020].
@@ -228,7 +236,7 @@ où $\beta_{jk}$ est le poids contrôlant la probabilité de l'arrête ($j,k$) d
 
 ### Pouvoir explicatif
 
-Le pouvoir explicatif de chaque modèle pour chaque taxon est donné par une mesure de pseudo-*R^2^*, dénommé après *SR^2^*. Pour les modèles de Poisson, e *SR^2^* est basé sur la mesure de la corrélation de Spearman entre les données d'abondance observées et prédites [@Ovaskainen_2020]. Cette mesure est calculée de la façon suivante pour l'espèce $j$ :
+Le pouvoir explicatif de chaque modèle pour chaque taxon est donné par une mesure de pseudo-*R^2^*, dénommé après *SR^2^*. Pour les modèles de Poisson, le *SR^2^* est basé sur la mesure de la corrélation de Spearman entre les données d'abondance observées et prédites [@Ovaskainen_2020]. Cette mesure est calculée de la façon suivante pour l'espèce $j$ :
 
 $$ SR^2_j = sgn\left(r_s\left(y_{.j}, \hat{y}_{.j}\right)\right) \times r_s\left(y_{.j}, \hat{y}_{.j}\right)^2 $$ {#eq:eq2}
 
@@ -266,25 +274,106 @@ La concordance de l'avis des experts a été mesurée à l'aide du *Kappa de Fle
 
 # Resultats
 
+Avant de regarder les résultats des différents modèles du framework *HMSC*, la validité de ces modèles a été inspectée. La bonne convergence des chaînes a été vérifiée à l'aide de l'outil de diagnostic de Gelman-Rubin [@Gelman_1992]. Enfin, le nombre d'échantillons indépendants pour chaque paramètre était satisfaisant.  
+
+## Coût de calcul
+
+Les calculs pour tous les modèles ont été réalisés sur l'hypercalculateur de l'IFREMER DATARMOR. Le processeur de chaque noeud de calculs du cluster HPC est un CPU Intel E5-2680 v de 14 coeurs cadencés à 2,40 GHz. Chaque modèle n'utilisait pas plus d'un seul coeur. *HMSC_hier* est le modèle le plus coûteux en termes de temps de calcul et *GLLVM* est le modèle le plus coûteux en ce qui concerne la mémoire vive (+@tbl:coutcalc). 
+
+|     Modèle     |   Temps de calcul (h : mn)   |      RAM (Go)    |
+| :------------- | :--------------------------: | :--------------: |
+| *HMSC_reg*     | $25:27$                      | $0,49$           |
+| *HMSC_samp*    | $170:56$                     | $0,69$           |
+| *HMSC_hier*    | $457:50$                     | $0,73$           |
+| *PLN*          | $00:03$                      | $0,37$           |
+| *GLLVM*        | $13:43$                      | $68,1$           |
+
+Table: Coût de calculs des différents modèles. {#tbl:coutcalc}
+
+Le temps de calcul pour les modèles *HMSC* dépend fortement de la taille des données d'abondance faunistique, du nombre de variables explicatives, mais surtout dans ce cas-ci de la structure des effets aléatoires inclus. De plus, l'ajustement de modèles par la méthode *MCMC* est aussi une opération très couteuse en puissance de calculs. Toutefois, le temps de calcul peut être réduit en faisant tourner les chaînes de Markov en parallèle. Cette solution n'a pas pu être mise en oeuvre à cause de bugs informatiques.
+
+Le coût en mémoire vive de *GLLVM* s'explique par la manière dont sont sauvegardés les paramètres de la régression : à eux seuls, ils pèsent un peu moins de 43 Go. Ce poids peut être réduit en diminuant le nombre de variables latentes utilisées, ce qui réduit en même temps du temps de calcul.
+
+*PLN* quant à lui est le modèle le plus économe en termes de coût de calculs, notamment grâce à sa structure de variable latente qui n'inclue qu'un seul effet aléatoire.
+
+## Pouvoir explicatif
+
+Les modèles ayant le meilleur pouvoir explicatif sont les modèles *HMSC* ayant des effets aléatoires (+@fig:SR2). Ces deux modèles semblent très proches quant à leur pouvoir explicatif. Leur *SR^2^* moyens sont supérieur à $0,2$ et leur *SR^2^* médian proche de $0,2$. Pour ces deux modèles, le même taxon est le expliqué avec un *SR^2^* proche de $0,8$. Les taxa les mieux expliqués sont communs à ces deux modèles. Néanmoins, ces performances en terme de pouvoir explicatif sont à mettre en perspective du grand nombre d'espèces étant faiblement expliqués par ces deux modèles.
+
+![Distribution du SR^2^ pour chaque modèle. Les points rouges représentent la valeur moyenne du *SR^2^* pour chaque modèle. Les points noirs représentent les espèces, dont le *SR^2^* $>1.58\times IQR/\sqrt{n}$.](figures/SR2-density-method-2.png){#fig:SR2}
+
+Les modèles *HMSC_reg*, *PLN* et *GLLVM* sont quant à eux moins performant pour expliquer la distribution des espèces de polychètes (+@fig:SR2). Leur *SR^2^* médian et moyen est proche de $0.1$. Ici encore, il est possible de remarquer que la distribution des *SR^2^* est comparable et que ce sont les mêmes taxa qui sont les mieux expliqués par ces différents modèles. Il est à noter que le modèle *HMS_reg* ne partage qu'une seule espèce très bien expliquée avec les deux autres modèles *HMSC* : *Aonides oxycephala*. De plus, *Aonides oxycephala* ne fait pas parti des espèces les mieux expliquées par les modèles *PLN* et *GLLVM*.
+
 ## Effets de l'environnement
 
-![Effets des variables environmentales sur l'abondance des différentes espèces de polychètes.](figures/beta-all-plot-2.png){#fig:effectenv}
+Les espèces les mieux expliquées par les modèles sont principalement des taxa très communs et abondants (+@fig:effectenv). Ce sont des taxa ubiquistes ou des espèces inféodés aux sables fins comme *Magelona filiformis* ou encore *Melinna palmata*. Certains taxa dont la classification taxonomique est mal connue (*Lumbrineris spp.* ou bien *Acromegalomma spp.*) sont aussi bien expliqués, cela est dû notamment à leur forte abondance. Il est possible de remarquer que moins les espèces sont bien expliquées par les modèles, plus l'effet des variables environnementales est faiblement positif ou négatif. 
+
+![Effets des variables environnementales sur l'abondance des différentes espèces de polychètes. Les variables et les abondances sont centrées et réduites. Les espèces sont ordonnées par $SR^2$ moyen décroissant. Les variables environnementales sont ordonnées par proportion de variances expliquées décroissante (voir +@tbl:env pour leur description).](figures/beta-all-plot-2.png){#fig:effectenv}
+
+Les variables environnementales expliquant respectivement le plus et le moins de variances (*Average* et *Trask*) sont également celles qui ont l'effet le plus constant à travers les différents modèles. Il est toutefois possible de remarquer qu'il y a un changement de signe pour l'effet de la variable Trask entre les modèles *HMSC_samp* et *HMSC_hier* pour les espèces les mieux expliquées. Ce changement de signe est cohérent avec l'augmentation du nombre d'effets aléatoire pour le modèle *HMSC_hier*, ces nouveaux effets captent une plus grande partie de la variance qui était auparavant expliquée par les variables environnementales. De plus, ce changement de signe est cohérent avec la biologie des taxa les mieux expliqués. Un grand nombre d'entre eux préfèrent les sédiments fins et homogènes. Ainsi, leur abondance diminue lorsque l'hétérogénéité du sédiment augmente, expliquant l'effet négatif de la variable *Trask*.
 
 ## Validation croisée
 
 ### Occurence
 
-![Prédiction de l'occurence pour l'abondance corrigé par le J de Youden](figures/roc-richness-prediction-3.png){#fig:occpred}
+Grâce aux trois sites conservés pour la validation croisée, il a été possible de faire la comparaison de la performance de la prédiction de la richesse spécifique (+@fig:predocc et +@tbl:RMSEocc).
 
-![RMSE de la richesse pour chaque méthode.](figures/rmse-pred-abundance-occurence-2.png){#fig:rmseabund}
+![Richesse spécifique observée face à la richesse spécifique prédite par les différents modèles. Le point rouge représente la richesse moyenne.](figures/rmse-pred-abundance-occurence-2.png){#fig:predocc}
+
+Les deux modèles sont les modèles ayant comprenant le plus de variables latentes : *GLLVM* et *HMSC_hier*. *GLLVM* semble sous-estimer la richesse observée par rapport aux valeurs observées et par rapport aux autres modèles. *HMSC_hier* quant à lui surestime la richesse, mais la distribution de la richesse prédite par ce modèle couvre une grande gamme de valeur de la richesse observée. Les modèles contenant qu'une seule variable latente ou n'en contenant pas sont les modèles les moins performants. Ils surestiment la richesse observée.
+
+|Method      | Min|     Q1| Median|  Moy   |     Q3|   Max|
+|:-----------|:---|:------|:------|:-------|:------|:-----|
+|*GLLVM*     | $0$|  $3,0$|    $7$|  $7,63$| $10,0$|  $29$|
+|*HMSC_hier* | $1$| $11,5$|   $16$| $15,37$| $20,0$|  $33$|
+|*PLN*       | $4$| $21,0$|   $27$| $27,28$| $33,0$|  $51$|
+|*HMSC_reg*  | $6$| $25,0$|   $33$| $32,84$| $40,5$|  $56$|
+|*HMSC_samp* | $4$| $18,5$|   $30$| $29,65$| $38,5$|  $62$|
+Table: Statistiques descriptives du *RMSE* de la richesse spécifique par modèle. Les modèles sont classés par ordre croissant de *RMSE* maximal. Q1 et Q3 représentent respectivement le premier et troisième quartile du *RMSE* de chaque modèle. {#tbl:RMSEocc}
+
+Si l'on s'intéresse maintenant à la prédiction de l'abondance en fonction des années, des sites et des habitats, il est possible de remarquer *HMSC_hier* semble être le modèle qui arrive le mieux à prédire les changements de richesses spécifiques (+@fig:occpred). C'est le seul modèle qui suit la tendance à la diminution de la richesse spécifique dans les herbiers de l'Arcouest ainsi que dans les herbiers de Sainte-Marguerite en 2009. Pour les sédiments nus, les prédictions de la richesse semblent être plus difficiles à réaliser, aucun modèle n'a su prédire l'augmentation rapide de la richesse spécifique observée en 2009 à Sainte-Marguerite (+@fig:occpred).
+ 
+![Prédiction de l'occurence pour l'abondance corrigé par le J de Youden](figures/roc-richness-prediction-3.png){#fig:occpred}
 
 ### Abondance
 
+Aucun modèle ne parvient à prédire de manière satisfaisante l'abondance des espèces à chaque site (+@tbl:RMSEabund). Le modèle le moins mauvais est le modèle *HMSC_hier* dont la pire valeur de RMSE pour une espèce est de l'ordre de $10^4$. Bien que cette erreur soit importante, elle est négligeable fasse à la plus faible du modèle GLLVM dont la plus faible valeur de RMSE est de l'ordre de $10^31$. 
+
+|Method    |        Min|         Q1|     Median|       Mean|         Q3|        Max|
+|:---------|:----------|:----------|:----------|:----------|:----------|:----------|
+|HMSC_hier | $2,40\times 10^{01}$| $2,41\times 10^{02}$| $6,77\times 10^{02}$| $3,63\times 10^{03}$| $2,37\times 10^{03}$| $4,13\times 10^{04}$|
+|HMSC_samp | $3,40\times 10^{01}$| $1,00\times 10^{03}$| $3,02\times 10^{03}$| $6,53\times 10^{03}$| $7,57\times 10^{03}$| $4,36\times 10^{04}$|
+|PLN       | $1,70\times 10^{04}$| $2,81\times 10^{04}$| $3,71\times 10^{04}$| $3,99\times 10^{04}$| $4,53\times 10^{04}$| $8,59\times 10^{04}$|
+|HMSC_reg  | $9,60\times 10^{02}$| $5,07\times 10^{03}$| $1,26\times 10^{04}$| $2,19\times 10^{04}$| $1,81\times 10^{04}$| $3,37\times 10^{05}$|
+|GLLVM     | $1,25\times 10^{31}$| $9,14\times 10^{32}$| $7,68\times 10^{34}$| $1,09\times 10^{36}$| $3,51\times 10^{35}$| $8,22\times 10^{36}$|
+Table: Statistiques descriptives du *RMSE* de l'abondance par modèle. Les modèles sont classés par ordre croissant de *RMSE* maximal. Q1 et Q3 représentent respectivement le premier et troisième quartile du *RMSE* de chaque modèle. {#tbl:RMSEabund}
+
 ## Résaux reconstruits
 
-![Réseau reconstruit à l'aide des probabilités moyenne de chaque méthode.](figures/mean-network-1.png){#fig:meannet}
+### Analyse des graphes
 
-## Coûts de Calculs
+Pour tous les modèles incluant au moins une variable latente, un réseau a été reconstruit grâce à la matrice de $\Omega$. Pour la méthode HMSC_hier, un réseau par effet aléatoire a été reconstruit, chaque effet aléatoire ayant sa propre matrice $\Omega$. Un méta-réseau moyennant les probabilités de chaque méthode a également été créé. L'ensemble des différents réseaux sont représentés en annexe.
+
+Tous ces réseaux probabilistes présentent le même nombre de liens $l$. Toutefois la variance du nombre de liens est légèrement plus importante chez les réseaux du modèles *HMSC_hier*. La connectance $C$ est quasiment identique pour tous les modèles. L'imbrication $\eta$ des réseaux est quasi-nulle ($\eta \in [0;1]$).
+
+|Méthode           | $l$   | $Var(l)$|      $C$    | Var($C$)      |    $\eta$|
+|:-----------------|:-----|:---------|:-----------|:---------------|---------:|
+|HMSC_samp         |   182|  161.2572|   0.0217391|       0.0000023| 0.0320728|
+|HMSC_hier_annee   |   182|  171.6276|   0.0215028|       0.0217391| 0.0277452|
+|HMSC_hier_site    |   182|  155.2447|   0.0215028|       0.0217391| 0.0334290|
+|HMSC_hier_habitat |   182|  171.9385|   0.0215028|       0.0217391| 0.0272676|
+|HMSC_hier_moyen   |   182|  170.7823|   0.0215028|       0.0217391| 0.0272676|
+|GLLVM             |   182|  156.5237|   0.0215028|       0.0217391| 0.0425502|
+|PLN               |   182|  158.8137|   0.0217391|       0.0000022| 0.0421982|
+|Moyen             |   182|  168.4255|   0.0215028|       0.0000024| 0.0325868|
+
+L'avis des experts du taxon des polychètes sur le réseau moyen est que le réseau moyen est assez intéressant d'un point de vue biologique (+@fig:meannet). Il laisse paraître des interactions proies-prédateurs comme celles entre *Perinereis cultrifera* et *Lumbrineris spp.*, *Magelona filiformis* et *Sigalion mathildae* ou bien encore *Scalibregma celticum* et *Sthenelais boa*. La probabilité d'interaction forte entre *Platynereis dumerilii* et *Euclymene spp.* et entre *Notomastus latericeus* pourrait traduire de la compétition. *Platynereis dumerilii* est un brouetteur de microphyto benthos et les deux autres espèces sont des déposivores. Ces taxa pourraient entrer en compétition pour l'espace. De plus, ces trois taxa sont également ceux avec la plus grande centralité du réseau moyen, cette importante dans le réseau est peut-être liée à la forte dominance des espèces déposivores ou brouetteuses dans cette communauté.
+
+![Réseau reconstruit à l'aide des probabilités moyennes de chaque méthode. Les points rouges représentent les taxa de polychètes retrouvés dans les deux habitats, les verts retrouvés uniquement dans les herbiers et les bleus dans les sédiments meubles. Seul les arrête ayant une probabilité $p > 0.2* sont affichés.L'opacité des arrêtes est proportionnelle à leur probabilité. L'opacité des points est proportionnelle à leur importance dans le réseau.](figures/mean-network-1.png){#fig:meannet}
+
+### Avis des experts du taxon des polychètes
+
+Besoin de discuter avec vous là-dessus.
 
 # Discussion
 
