@@ -12,7 +12,7 @@ geometry:
   - textheight=\paperheight
 fontsize: 12pt
 toc: true
-linestretch: 1.5
+linestretch: 1.241
 bibliography: [./ref_interaction_inference.bib] # This field is overid when pandoc is use, but it allow to use citation completion when writting.
 # The model
 #
