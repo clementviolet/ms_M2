@@ -94,7 +94,7 @@ Les *JSDMs* présentés dans le +@tbl:jsdm sont tous des extensions multivariée
 
 $$ y_{ij} = g\left(m_{ij}\right) = x_{i.} \times \beta_j + Z_{i.} \times \lambda_j $${#eq:lvm} 
 
-Avec $y_{ij}$ représentant l'abondance prédite de l'espèce $i$ au site $j$. $g(m_{ij})$ une fonction de l'abondance moyenne de l'espèce $j$ au site $i$. $x_i$ le vecteur de variable environnementale au site $i$, $\Beta_j$ le coefficient de l'effet environnemental pour l'espèce $j$. Et avec $Z_i.$ la matrice de variable latente associée aux sites et $\lambda_j$ la matrice de poids associés à l'espèce $j$.
+Avec $y_{ij}$ représentant l'abondance prédite de l'espèce $i$ au site $j$. $g(m_{ij})$ une fonction de l'abondance moyenne de l'espèce $j$ au site $i$. $x_i$ le vecteur de variable environnementale au site $i$, $\beta_j$ le coefficient de l'effet environnemental pour l'espèce $j$. Et avec $Z_i.$ la matrice de variable latente associée aux sites et $\lambda_j$ la matrice de poids associés à l'espèce $j$.
 
 La résolution de cette équation n'est possible que si l'on admet des contraintes additionnelles telles que par exemple [@warton2015] : 
 $$\left(Z_i \times \lambda_j\right) \sim \mathcal{N}\left(0, \Omega\right)$$ {#eq:lvmconst}
