@@ -110,6 +110,26 @@ urlcolor=black}
 \let\Oldincludegraphics\includegraphics
 \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 
+\usepackage{eso-pic} % Add picture in background
+
+% Title page
+\newcommand\BackgroundPic{%
+	\put(0,0){%
+		\parbox[b][\paperheight]{\paperwidth}{%
+			\Oldincludegraphics[height=\paperheight, width=0.25\paperwidth]{../.assets/templates/pictures/polychaeta-4.jpg}%
+			\vfill
+		}
+	}
+	% Manually positionning the picture
+	\put(150,-720){
+		\parbox[b][\paperheight]{\paperwidth}{%
+			\Oldincludegraphics[]{../.assets/templates/pictures/logo_memoire.png}
+			\vfill
+		}
+	}
+}
+
+
 \usepackage{float}
 \floatplacement{figure}{H}
 
@@ -227,7 +247,40 @@ $endif$
 
 
 $if(title)$
-\maketitle
+%\maketitle
+
+\begin{titlepage}
+	\newgeometry{top=4cm, bottom=4cm, left=5.5cm, right=1cm}
+	
+	\AddToShipoutPicture*{\BackgroundPic}
+	\centering
+	{\LARGE Université de Rennes 1 \par}
+	\vspace{1cm}
+	{\Large Master 2 : Modélisation en Ecologie\par}
+	\vspace{1.5cm}
+	{\scshape\large\bfseries Comparaison de \emph{Joint Species Distribution Models} : performance et reconstruction de réseaux écologiques --- Application à une communauté de benthique de polychètes\par}
+	\vspace{2cm}
+	{\scshape\Large\itshape Clément Violet\par}
+	\vfill
+  \large \emph{Laboratoire d'Ecologie Benthique Côtière}, Centre IFREMER Brest
+	\vfill
+	\large Encadrants :\par
+	\vspace{0.5cm}
+	\begin{tabular}{l}
+	\large \textbf{Dr Martin Marzloff}, \emph{IFREMER}, LEBCO Brest \\
+	\large Dr. Aurélien \textsc{Boyé}, \emph{IFREMER} , LEBCO, Brest \\
+	\large Dr. Olivier \textsc{Gauthier}, \emph{IUEM}, LEMAR, Brest\\
+	\large Dr. Jacques \textsc{Grall}, \emph{IUEM}, Observatoire Marin, Brest\\
+	\end{tabular}
+	
+	\vfill
+
+% Bottom of the page
+	{\large\textbf{Année 2019 --- 2020}}
+	
+\end{titlepage}
+
+\restoregeometry
 $endif$
 
 %{\small
