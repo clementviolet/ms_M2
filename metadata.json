@@ -15,5 +15,8 @@
   "description": "Mémoire Stage M2",
   "keywords": ["Réseaux écologique, Inférence de réseaux, JSDM"],
   "filename": "ms_M2",
-  "link-citations": true
+  "link-citations": true,
+  "tablenos-plus-name": "tableau",
+  "tablenos-star-name": "Tableau",
+  "tablenos-caption-name": "Tableau"
 }
