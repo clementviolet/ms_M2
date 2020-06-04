@@ -65,83 +65,89 @@ bibliography: [./ref_interaction_inference.bib] # This field is overid when pand
 
 # Introduction
 
-L'écologie moderne s'intéresse particulièrement à la façon dont les espèces sont distribuées à la surface du globe. Des outils théoriques et pratiques ont ainsi été développés pour comprendre les facteurs qui gouvernent la distribution des espèces et prédire les patrons de biodiversités. Les besoins d'une espèce pour persister peuvent par exemple être décrit par la niche écologique de Hutchinson, un hypervolume à n-dimemensions où chaque dimension représente une ressource ou une condition environnementale [@Hutchinson_1957]. Cette niche de Hutchinson peut être divisée en deux niches : la niche de Grinnell qui s'intéresse plus particulièrement aux conditions abiotiques nécessaires pour qu'une espèce persiste. La niche de Grinelle se concentre sur la niche fondamentale de l'espèce. La niche d'Elton se focalise elle, principalement sur les interactions biotiques entre les individus [@Grinnell_1917; @Elton_2001]. En ajoutant les interactions biotiques aux aspects environnementaux de la niche de Grinelle, la niche d'Elton permet de décrire la niche réalisée des espèces, qui est en réalité la seule niche observée *in situ*.
+L'écologie moderne s'intéresse particulièrement à la répartition des espèces sur la surface du globe [@Worm_2018] et à la réorganisation de la biodiversité face aux changements environnementaux en cours [@Magurran_2019; @Blowes_2019]. Une multitude d'approches théoriques et empiriques a ainsi été développée pour comprendre les facteurs qui gouvernent la biogéographie des espèces et prédire les patrons spatiaux et temporels de biodiversités.
 
-Pour expliquer et prédire la distribution des espèces à l'aide de variables environnementales, des modèles nommés *Species Distribution modèle* (*SDM*) ont été créés. Ces modèles s'appuient sur les niches environnementales des espèces pour prédire leurs distributions. C'est ainsi que la niche de Grinnell "constitue la colonne vertébrale des modèles de distribution d'espèces" [@Gravel_2018].
+La capacité de persistance d'une espèce peut être définie grâce au concept de niche écologique tel que proposé par Hutchinson [@Hutchinson_1957]. Ainsi, la niche d'une espèce est représentée selon un hypervolume à n-dimemensions où chaque dimension correspond à une ressource ou une condition environnementale [@Blonder_2017] et permet de décrire les besoins ou la gamme de tolérance physiologique des organismes [@Sunday_2012]. Cette niche de Hutchinson peut être divisée en deux niches : (1) la niche de Grinnell qui s'intéresse plus particulièrement aux contraintes liées aux conditions abiotiques et caractérise la niche fondamentale de l'espèce [@Grinnell_1917]; (2) La niche d'Elton qui se focalise, principalement sur les interactions biotiques entre les individus [@Elton_2001]. En considérant le rôle des interactions biotiques en complément des contraintes environnementales, la niche d'Elton permet de décrire la niche réalisée des espèces, qui est en réalité celle observée *in situ*.
 
-## Prédire la distriubtion d'une espèce
+Une des manières d'avoir accès à la niche environnementale d'une espèce passe par l'expérimentation. Néanmoins, ces expériences ne peuvent se concentrer sur un grand nombre de facteurs abiotiques à la fois [@Wright_2006]. Ces expérimentations s'intéressent surtout à des petites échelles spatiales et temporelles. Cette faible échelle d'étude ne permet pas de comprendre les phénomènes écologiques et il est nécessaire de les observer à plusieurs échelles spatiotemporelles, et ce particulièrement dans cette époque de changements globaux rapides induits par l'Homme [@Edgar_2016; @Estes_2018]. C'est pourquoi l'usage des modèles de distribution d'espèces permet de contourner ces problèmes.
 
-Le premier framework de *SDM* est apparu dans les années 80 avec le package *BIOCLIM*, mais depuis ces vingt dernières années, un réel engouement s'est créé autour de ce cadre de modélisation. Ce type de modèle est apprécié notamment grâce à son large cadre d'application qui s'étend au-delà de l'écologie des communautés et grâce aux progrès informatiques et mathématiques qui les rendent faciles à mettre en oeuvre [@Ovaskainen_2020; @Araujo_2019]. Néanmoins, l'aspect eltonien de la niche des espèces reste bien moins connu [@Dehling_2018; @Hortal_2015]. Comprendre le rôle des interactions biotiques dans la distribution des espèces apparaît comme l'un des principaux manque pour mieux appréhender et prédire les patrons spatiaux et temporels de la biodiversité. 
+## Prédire la distribution d'une espèce
 
-|        *Single-species distribution model *             |     Référence             |  
-| :------------------------------------------------------ | :------------------------ |
-| *Boosted regression trees* (*BRT*)                      | @dismo; @gbm; @Elith_2008 | 
-| *Generalised additive model* (*GAM*)                    | @Wood_2011                |
-| *Generalised linear model* (*GLM*)                      | @RCoreTeam_2019           |
-| *Gradient nearset neighbour* (*GNN*)                    | @Crookston_2007           |
-| *Maximum-entropy approach* (*MaxEnt*)                   | @Phillips_2006            |
-| *Multivariate adaptive regression spline* (*MARS-COMM*) | @Milborrow_2017           |
-| *Random forest* (*RF*)                                  | @Liaw_2002                |
-| *Support vector machine* (*SVM*)                        | @Meyer_2019               |
-| *Gradient extreme boosting* (*XGB*)                     | @Chen_2019                |
-Table: Quelques-uns des modèles de *SDM* les plus populaires actuellement (adapté de @Ovaskainen_2020). {#tbl:sdm}
+Parmi les approches permettant d'étudier la répartition spatiale d’espèces, les modèles de distributions d'espèces (*Species Distribution Models* ; *SDM*) constituent sans conteste l'un des outils les plus utilisés sur ces vingt dernières années [@Melo_Merino_2020; @Guisan_2017]. Les *SDM* reposent sur l'utilisation de variables environnementales pour expliquer et prédire la répartition des espèces, la niche de Grinnel constituant "la colonne vertébrale des modèles de distribution d'espèce" [@Gravel_2018].
 
-A l'origine, ces modèles se contentaient de modéliser la distribution d'une seule espèce à la fois et sont qualifiés de *Single-species Distribution Models* (+@tbl:sdm). Toutefois, si la question de recherche s'intéresse à la communauté, il existe deux stratégies différentes pour modéliser la distribution des espèces la composant. Il est possible prédire la distribution des espèces indépendamment et de les assembler en communauté ensuite (*Stack Species Distribution Model* ou *SSDM*), ou bien de  prédire la distribution des espèces et les conjointement (*Joint Species Distribution Model*) [@Ferrier_2006]. La différence majeure entre les deux méthodes est que les *SSDMs* ne tiennent pas compte du filtre biotique que les espèces exercent les unes sur les autres [@Zurell_2019]. Au contraire, les *JSDMs*  ont été développés en prenant en compte la co-occurrence qui existe entre les espèces, permettant de modéliser à la fois la distribution d'une espèce en particulier et de toute la communauté en tenant compte du filtre biotique [@warton2015]. Cette structure de co-occurrence particulière permet d'inférer de manière plus ou moins directe les interactions entre espèces [@Ovaskainen_2017b]. De plus, comme les *JSDMs* modélisent toute la communauté en une seule fois, ces modèles sont moins à risque de surapprentissage que les *SSDM* [@Ovaskainen_2020].
+La première implémentation de SDM est apparue à la fin des années 80 avec la méthode *BIOCLIM* [@Busby_1991]. Le développement de ce type d'approche de modélisation a notamment été favorisé par les progrès informatiques qui les rendent faciles à mettre en oeuvre [@Ovaskainen_2020; @Araujo_2019]. Ainsi, des SDM ont utilisé des modèles linéaires généralisés [@Hastie_1992], des modèles linéaires additifs [@Wood_2011], ou bien encore plus récemment des modèles de machine learning basée sur des arbres [@Elith_2008][^1]. Ces modèles permettent uniquement de modéliser la distribution d'une seule espèce à la fois, ils sont qualifiés de *Single-species Distribution Model*.
+
+[^1]: Un tableau listant quelques une des méthodes de SDM actuellement utilisées sont disponible dans le +@tbl:sdm en annexe.
+
+Si ces méthodes permettent de caractériser la niche potentielle des espèces, la niche réalisée et notamment l'aspect eltonien de la niche des espèces reste plus difficile à appréhender [@Dehling_2018; @Hortal_2015]. Comprendre le rôle des interactions biotiques dans la distribution des espèces est souvent un facteur limitant nos capacités à prédire les patrons spatiaux de biodiversité. 
 
 ## Prédire la distribution d'une communauté biologique
 
-Les *JSDMs* présentés dans le +@tbl:jsdm sont tous des extensions multivariées à variables latentes des modèles linéaires généralisés classiques [@Hui_2016 ; @Ovaskainen_2017a; @Niku_2019; @Chiquet_2019]. Un modèle à variables latentes (*LVM*) simple peut être écrit comme suit (l'ensemble des notations mathématiques sont présentées dans le glossaire) :
+Si la question de recherche s'intéresse à la communauté dans son entièreté, il existe deux stratégies différentes pour modéliser la distribution de multiples espèces la composant. Il est possible de prédire la distribution des espèces indépendamment et de les assembler en communauté ensuite (*Stack Species Distribution Model* ou *SSDM*), ou bien de  prédire la distribution des espèces et les conjointement (*Joint Species Distribution Model*) [@Ferrier_2006]. 
 
-$$ y_{ij} = g\left(m_{ij}\right) = x_{i.} \times \beta_j + Z_{i.} \times \lambda_j $${#eq:lvm} 
+La différence majeure entre les deux méthodes est que les *SSDMs*, en combinant des modèles faits indépendamment pour chaque espèce, ne tiennent pas compte du filtre biotique que les espèces exercent les unes sur les autres et négligent donc l'aspect eltonien de leur niche [@Zurell_2019]. Au contraire, les *JSDMs*  ont été développés en prenant en compte les patrons de co-occurrence à l'échelle d'une communauté afin de modéliser conjointement la distribution de chaque espèce au sein de toute la communauté en tenant compte des filtres abiotiques [@warton2015]. Cette structure de co-occurrence fournit alors des informations potentielles sur les interactions entre espèces [@Ovaskainen_2017b]. 
 
-Avec $y_{ij}$ représentant l'abondance prédite de l'espèce $i$ au site $j$. $g(m_{ij})$ une fonction de l'abondance moyenne de l'espèce $j$ au site $i$. $x_i$ le vecteur de variable environnementale au site $i$, $\beta_j$ le coefficient de l'effet environnemental pour l'espèce $j$. Et avec $Z_i.$ la matrice de variable latente associée aux sites et $\lambda_j$ la matrice de poids associés à l'espèce $j$.
+Au contraire des modèles climatologiques appliqués par les *SDMs*, les *JSDMs* permettent de prendre en compte d'autres types de données comme des données spatiales, temporelles, des traits fonctionnels ou bien encore la phylogénie des espèces. Ainsi les *JSDMs* prennent mieux en compte la variabilité des espèces et par conséquent, celle des communautés.
 
-La résolution de cette équation n'est possible que si l'on admet des contraintes additionnelles telles que par exemple [@warton2015] : 
-$$\left(Z_i \times \lambda_j\right) \sim \mathcal{N}\left(0, \Omega\right)$$ {#eq:lvmconst}
+---
+# ## Prédire la distribution d'une communauté biologique
 
-Avec $\Omega$ la matrice de covariance résiduelle entre espèces qui est estimé à l'aide de la matrice de poids associé aux espèces $\Lambda$.
+# Les *JSDMs* présentés dans le +@tbl:jsdm sont tous des extensions multivariées à variables latentes des modèles linéaires généralisés classiques [@Hui_2016 ; @Ovaskainen_2017a; @Niku_2019; @Chiquet_2019]. Un modèle à variables latentes (*LVM*) simple peut être écrit comme suit (l'ensemble des notations mathématiques sont présentées dans le glossaire) :
 
-$$\Omega = \Lambda \Lambda^\prime$$ {#eq:loadings}
+# $$ y_{ij} = g\left(m_{ij}\right) = x_{i.} \times \beta_j + Z_{i.} \times \lambda_j $${#eq:lvm} 
 
-Ainsi, les *LVMs* permettent de prendre en compte des éventuelles variables explicatives manquantes tout en estimant la corrélation entre espèces. Un autre avantage des variables latentes est que l'estimation de matrice de corrélation entre espèces est plus simple que par rapport à un modèle linéaire à effets mixtes généralisés. La matrice de coordonnés des espèces ($\lambda$) dans le cas d'un *LVM* a au plus autant de colonnes que de variables latentes (+@eq:lvmconst et @eq:loadings), tandis que dans le cas d'un modèle linéaire à effets mixte généralisé celle-ci à autant de colonnes que d'espèces [@warton2015]. Ainsi, le nombre de variables latentes utilisées par le modèle est donc un paramètre crucial, puisqu'il permet de faire un compromis entre précisions de la matrice de corrélation résiduelle et la réduction du temps de calcul et des degrés de liberté utilisés [@warton2015]. 
+# Avec $y_{ij}$ représentant l'abondance prédite de l'espèce $i$ au site $j$. $g(m_{ij})$ une fonction de l'abondance moyenne de l'espèce $j$ au site $i$. $x_i$ le vecteur de variable environnementale au site $i$, $\beta_j$ le coefficient de l'effet environnemental pour l'espèce $j$. Et avec $Z_i.$ la matrice de variable latente associée aux sites et $\lambda_j$ la matrice de poids associés à l'espèce $j$.
 
-|              *Joint species distribution model*           |     Référence     |
-| :-------------------------------------------------------- | :---------------- |
-| *Bayesian ordination and regression analysis* (*BORAL*)   | @Hui_2016         |
-| *Hierachical modelling of Species Communities* (*HMSC*)   | @Ovaskainen_2017a |
-| *Generalized linear latent variable models* (*GLLVM*)     | @Niku_2019        |
-| *Poisson lognormal model* (*PLN*)                         | @Chiquet_2019     |
-Table: Quelques uns des modèles de *JSDM* (adapté de @Ovaskainen_2020). {#tbl:jsdm}
+# La résolution de cette équation n'est possible que si l'on admet des contraintes additionnelles telles que par exemple [@warton2015] : 
+# $$\left(Z_i \times \lambda_j\right) \sim \mathcal{N}\left(0, \Omega\right)$$ {#eq:lvmconst}
 
-### Modélisation Hiérarchique de Communautés Biologiques
+# Avec $\Omega$ la matrice de covariance résiduelle entre espèces qui est estimé à l'aide de la matrice de poids associé aux espèces $\Lambda$.
 
-*HMSC* est un modèle mixte linéaire généralisé, hiérarchique et multivarié, ajusté par inférence bayésienne [@Ovaskainen_2020]. Ce cadre de modélisation rend possible l'utilisation de traits et de la phylogénie pour ajuster les niches abiotiques des taxa. La particularité de ce modèle est qu'il est hiérarchique, ainsi chaque effet aléatoire donne lieu à sa propre matrice de corrélation résiduelle [@Ovaskainen_2017a]. L'+@eq:hmsc présente la formulation mathématique d'un modèle n'utilisant que des variables environnementales et un nombre $n_r$ d'effets aléatoires. En plus des effets aléatoires classiques, ce cadre de modélisation permet de prendre en compte des effets aléatoires spatiaux et temporels.
+# $$\Omega = \Lambda \Lambda^\prime$$ {#eq:loadings}
 
-$$ y_{ij} = g\left(m_{ij}\right) = x_i \times \beta_j + \sum_{r = 1}^{n_r} Z_{ir} \times \lambda_{rj} $$ {#eq:hmsc}
+# Ainsi, les *LVMs* permettent de prendre en compte des éventuelles variables explicatives manquantes tout en estimant la corrélation entre espèces. Un autre avantage des variables latentes est que l'estimation de matrice de corrélation entre espèces est plus simple que par rapport à un modèle linéaire à effets mixtes généralisés. La matrice de coordonnés des espèces ($\lambda$) dans le cas d'un *LVM* a au plus autant de colonnes que de variables latentes (+@eq:lvmconst et @eq:loadings), tandis que dans le cas d'un modèle linéaire à effets mixte généralisé celle-ci à autant de colonnes que d'espèces [@warton2015]. Ainsi, le nombre de variables latentes utilisées par le modèle est donc un paramètre crucial, puisqu'il permet de faire un compromis entre précisions de la matrice de corrélation résiduelle et la réduction du temps de calcul et des degrés de liberté utilisés [@warton2015]. 
 
-Etant un modèle bayésien, la distribution a posteriori est échantillonné grâce à la méthode MCMC [@Ovaskainen_2017b]. L'utilisation de l'inférence bayésienne permet à l'utilisateur de ne pas spécifier le nombre de variables latentes à utiliser pour chaque effet aléatoire. Le modèle ajuste le nombre de variables latentes pour que celles non significatifs soient tronquées [@Ovaskainen_2020].
+# |              *Joint species distribution model*           |     Référence     |
+# | :-------------------------------------------------------- | :---------------- |
+# | *Bayesian ordination and regression analysis* (*BORAL*)   | @Hui_2016         |
+# | *Hierachical modelling of Species Communities* (*HMSC*)   | @Ovaskainen_2017a |
+# | *Generalized linear latent variable models* (*GLLVM*)     | @Niku_2019        |
+# | *Poisson lognormal model* (*PLN*)                         | @Chiquet_2019     |
+# Table: Quelques uns des modèles de *JSDM* (adapté de @Ovaskainen_2020). {#tbl:jsdm}
 
-### Modèle Généralisé à Variable latentes
+# ### Modélisation Hiérarchique de Communautés Biologiques
 
-*GLLVM* est un modèle mixte linéaire généralisé et multivarié ajusté par la méthode du maximum de vraisemblance. Ce cadre de modélisation prend en compte l'utilisation de variables environnementale et peut également inclure des traits. Un modèle ajusté avec ce type de modèle sans traits peut être écrit comme l'+@eq:lvm. Ce modèle présente une manière innovante de maximiser la vraisemblance en utilisant une approximation variationnelle gaussienne de la log-vraisemblance pour le cas où la fonction de lien serait des données de comptage surdispersé, binaires ou encore ordinales [@Niku_2019]. Cette méthode de maximisation de la log-vraisemblance permet d'accélérer les calculs. Comparativement à Boral [@Hui_2016], *GLLVM* peut réaliser les mêmes calculs en quelques minutes au lieu de quelques heures. Contrairement à HMSC, *GLLVM* demande à l'utilisateur de choisir le nombre de variables latentes qu'utilisera le modèle [@Gllvm_2019].
+# *HMSC* est un modèle mixte linéaire généralisé, hiérarchique et multivarié, ajusté par inférence bayésienne [@Ovaskainen_2020]. Ce cadre de modélisation rend possible l'utilisation de traits et de la phylogénie pour ajuster les niches abiotiques des taxa. La particularité de ce modèle est qu'il est hiérarchique, ainsi chaque effet aléatoire donne lieu à sa propre matrice de corrélation résiduelle [@Ovaskainen_2017a]. L'+@eq:hmsc présente la formulation mathématique d'un modèle n'utilisant que des variables environnementales et un nombre $n_r$ d'effets aléatoires. En plus des effets aléatoires classiques, ce cadre de modélisation permet de prendre en compte des effets aléatoires spatiaux et temporels.
 
-### Modèle de Poisson Lognormal
+# $$ y_{ij} = g\left(m_{ij}\right) = x_i \times \beta_j + \sum_{r = 1}^{n_r} Z_{ir} \times \lambda_{rj} $$ {#eq:hmsc}
 
-Le modèle de Poisson lognormal est modèle linéaire mixte et multivarié. Il ne peut modéliser qu'une seule sorte de distribution : la distribution (conditionnelle) de Poisson lognormal +@eq:pln [@Aitchison_1989; @Chiquet_2019]. Un modèle simple avec uniquement des variables environnementales peut être écrit de cette façon :
+# Etant un modèle bayésien, la distribution a posteriori est échantillonné grâce à la méthode MCMC [@Ovaskainen_2017b]. L'utilisation de l'inférence bayésienne permet à l'utilisateur de ne pas spécifier le nombre de variables latentes à utiliser pour chaque effet aléatoire. Le modèle ajuste le nombre de variables latentes pour que celles non significatifs soient tronquées [@Ovaskainen_2020].
 
-$$y_{ij}|Z_{ij} \sim \mathcal P\left(exp\left\{x_i \times \beta_j + Z_{ij}\right\}\right)$$ {#eq:pln}
+# ### Modèle Généralisé à Variable latentes
 
-Le vecteur latent $Z_i$ prend en compte les variations d'abondance non expliquées par les variables environnementales incluses dans le modèle [@Momal_2020]. Cette variable latente agit comme un effet aléatoire lié à l'échantillon [@Momal_2020]. Dans ce cadre de modélisation, il y a autant de variables latentes différentes qu'il y a d'espèces et la distribution de cette variable latente est paramétrisée de la manière suivante :
+# *GLLVM* est un modèle mixte linéaire généralisé et multivarié ajusté par la méthode du maximum de vraisemblance. Ce cadre de modélisation prend en compte l'utilisation de variables environnementale et peut également inclure des traits. Un modèle ajusté avec ce type de modèle sans traits peut être écrit comme l'+@eq:lvm. Ce modèle présente une manière innovante de maximiser la vraisemblance en utilisant une approximation variationnelle gaussienne de la log-vraisemblance pour le cas où la fonction de lien serait des données de comptage surdispersé, binaires ou encore ordinales [@Niku_2019]. Cette méthode de maximisation de la log-vraisemblance permet d'accélérer les calculs. Comparativement à Boral [@Hui_2016], *GLLVM* peut réaliser les mêmes calculs en quelques minutes au lieu de quelques heures. Contrairement à HMSC, *GLLVM* demande à l'utilisateur de choisir le nombre de variables latentes qu'utilisera le modèle [@Gllvm_2019].
 
-$$Z_i \sim N\left(0_{n_s}, \Omega^{-1}\right) $$ {#eq:constpln}
+# ### Modèle de Poisson Lognormal
 
+# Le modèle de Poisson lognormal est modèle linéaire mixte et multivarié. Il ne peut modéliser qu'une seule sorte de distribution : la distribution (conditionnelle) de Poisson lognormal +@eq:pln [@Aitchison_1989; @Chiquet_2019]. Un modèle simple avec uniquement des variables environnementales peut être écrit de cette façon :
+
+# $$y_{ij}|Z_{ij} \sim \mathcal P\left(exp\left\{x_i \times \beta_j + Z_{ij}\right\}\right)$$ {#eq:pln}
+
+# Le vecteur latent $Z_i$ prend en compte les variations d'abondance non expliquées par les variables environnementales incluses dans le modèle [@Momal_2020]. Cette variable latente agit comme un effet aléatoire lié à l'échantillon [@Momal_2020]. Dans ce cadre de modélisation, il y a autant de variables latentes différentes qu'il y a d'espèces et la distribution de cette variable latente est paramétrisée de la manière suivante :
+
+# $$Z_i \sim N\left(0_{n_s}, \Omega^{-1}\right) $$ {#eq:constpln}
+---
 ## Objectifs scientifiques
 
-Il existe différentes implémentation de ces modèles conjoints (+@tbl:jsdm) développés ces dernières année qui ont été fortement influncée par les théories de distribution des espèces issues de l'écologie végétale [@warton2015]. D'un point de vue théorique, certaines théories suggèrent que les interactions jouent un rôle dans la structuration des communautés. Toutefois, d'autres théories étayé par des données empirique laisse à penser que ces même intéractions ont un rôle non négligeable [@Leibold_2018]. Cette base théorique ancré principalement dans l'écologie végétale amène à se questionner sur la performances de ces *JSDM* en écologie marine. Les communautés benthiques sont  différentes dans le fonctionnement des communautés végétales : le milieu marin est par exemple plus dispersif, et les espèces marines ont généralement une capacité de mobilité supérieur comparativement aux communautés végétales [@Burgess_2015]. Cette capcité de dispersion associé à la mobilité des organismeslaisse à penser que le rôle du filtre abiotique serait moindre. De plus, l'accessibilité et l'observabilité du milieu marin étant moindre, les méthodes de *JSDM* semblent être des méthodes prométeuse pour accéder aux interactions.
+Différentes implémentations de ces modèles conjoints de distribution d'espèces (+@tbl:jsdm) ont vu le jour ces dernières années sous l'influence forte de théorie issue de l'écologie végétale concernant le rôle des interactions dans la structuration des communautés de plantes à larges échelles spatiales et temporelles [@warton2015]. 
 
-De récents travaux se sont intéresser à comparer certaines de ces méthodes. *HMSC* est considéré comme l'un des meilleurs modèle de *JSDM* par @Norberg_2020 qui a comparé 33 modèles de *SDMs*. @Momal_2020 comparait quant à elle *PLN* et *GLLVM*, mais aucune comparaison direct entre *HMSC*, *PLN* et *GLLVM* n'a été réalisé à notre connaissance. Ce travaille se concentre donc sur ces trois cadre de modélisation : *HMSC*, *GLLVM*, et *PLN*.
+Les interactions biotiques structurent plus fortement les communautés à large échelle que ce que nous pensions. Néanmoins, l'importance des interactions biotiques comme facteur structurant des communautés est variable dans le temps, dans l’espace et selon les systèmes biologiques [@Leibold_2018].  Cette variabilité peut être expliquée par la nature des interactions entre les espèces qui peuvent être de nature différente selon les communautés d'intérêts. La compétition pour l'espace par exemple est l'un des principaux facteurs qui structurent les communautés benthiques de l'estran rocheux. La compétition entre les  balannes et les moules est l'un des principaux exemples de la compétition pour le substrat [@Hawkins_2019]. A contrario, les plages de sable sont moins structurées par les interactions que les estrans rocheux, car généralement plus exposés aux forces hydrodynamiques que les estrans rocheux [@Woodin_2019].
 
-Le but de ce travail est de mesurer la performance de prédiction de l'occurence, de l'abondance de ces modèles, ainsi que de comprendre l'influence des interactions biotiques à des échelles.
+Observer et quantifier les interactions dans les écosystèmes marins est une tâche difficile. Pour les écosystèmes pélagiques, il est possible d'utiliser différentes techniques comme l'observation directe, l'étude des contenus stomacaux ou bien l'analyse isotopique d'acides gras [@Majdi_2018]. Toutefois, ces techniques sont difficiles à mettre en place pour des écosystèmes benthiques. Ainsi, les *JSDMs* peuvent être des outils intéressants pour mieux comprendre les interactions biotiques des écosystèmes intertidaux benthiques.
+
+De récents travaux se sont intéressés à comparer certaines de ces méthodes. @Norberg_2020 a comparé trente-trois modèles de distributions d'espèces sur des jeux de données de présence/absence de communautés végétales. @Momal_2020 quant à eux ont comparé la capacité de reconstruction de réseaux d'interaction à partir de résultats de modèles *JSDM* entrainés sur des données d'abondance d'une communauté de poissons et sur des données de métabarcoding issu d'une communauté fongique. @Niku_2019 présentaient le *JSDM* qu'ils avaient développé, et l'appliquait à une commutée de fourmis. A notre connaissance, il n'existe aucune comparaison de *JSDM* appliqué aux écosystèmes benthiques.
+
+Le but global de ce travail est d'explorer le potentiel de différentes méthodes de JSDM pour expliquer et prédire la diversité benthique. Grâce à la structure des *JSDM* nous allons prendre en compte les facteurs abiotiques pour mieux comprendre les patrons spatiotemporels de la biodiversité benthique et les interactions biotiques à l'échelle de la communauté. Pour ce faire, nous allons nous concentrer sur trois implémentations différentes des *JSDM* : l'un des meilleurs cadres de modélisation décrits par @Norberg_2020 (*HMSC*), celui utilisé par @Momal_2020 (*PLN*) et celui développé par @Niku_2019 (*GLLVM*). 
 
 # Matériel et méthode
 
@@ -408,3 +414,16 @@ Bien que ce travail centré sur les polychètes présente quelques limites liée
 :::
 
 # Annexes
+
+|        *Single-species distribution model*             |     Référence             |  
+| :------------------------------------------------------ | :------------------------ |
+| *Boosted regression trees* (*BRT*)                      | @dismo; @gbm; @Elith_2008 | 
+| *Generalised additive model* (*GAM*)                    | @Wood_2011                |
+| *Generalised linear model* (*GLM*)                      | @RCoreTeam_2019           |
+| *Gradient nearset neighbour* (*GNN*)                    | @Crookston_2007           |
+| *Maximum-entropy approach* (*MaxEnt*)                   | @Phillips_2006            |
+| *Multivariate adaptive regression spline* (*MARS-COMM*) | @Milborrow_2017           |
+| *Random forest* (*RF*)                                  | @Liaw_2002                |
+| *Support vector machine* (*SVM*)                        | @Meyer_2019               |
+| *Gradient extreme boosting* (*XGB*)                     | @Chen_2019                |
+Table: Quelques-uns des modèles de *SDM* les plus populaires actuellement (adapté de @Ovaskainen_2020). {#tbl:sdm}
