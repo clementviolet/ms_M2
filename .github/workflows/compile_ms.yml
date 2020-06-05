@@ -52,15 +52,15 @@ jobs:
         run: |
           pandoc thanks_glossary_math.md -s -o rendered/thanks_glossary_math.tex --template=.assets/templates/raw.tex
           python .assets/scripts/longtablealign.py
-          pandoc manuscript.md -s -o rendered/${{ env.repo_name }}.tex --include-before-body=rendered/thanks_glossary_math.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --template=.assets/templates/template.tex
+          pandoc manuscript.md -s -o rendered/${{ env.repo_name }}.tex --include-before-body=rendered/thanks_glossary_math.tex --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json --csl=.assets/templates/ecology-letters.cls --template=.assets/templates/template.tex
           python .assets/scripts/longtablefix.py
       - name: Create the website
         run: |
-          pandoc thanks_glossary_math.md manuscript.md -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=references.json --metadata-file=metadata.json --webtex
+          pandoc thanks_glossary_math.md manuscript.md -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --webtex
           mkdir rendered/css/
           cp .assets/templates/style.less rendered/css/
       - name: Build Word document
-        run: pandoc thanks_glossary_math.md manuscript.md -s -o rendered/${{ env.repo_name }}.docx --filter pandoc-xnos --bibliography=references.json --metadata-file=metadata.json
+        run: pandoc thanks_glossary_math.md manuscript.md -s -o rendered/${{ env.repo_name }}.docx --filter pandoc-xnos --bibliography=references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json
       - name: Build the pdf
         uses: xu-cheng/latex-action@master
         with:
