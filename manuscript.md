@@ -115,23 +115,25 @@ Le but global de ce travail est d’explorer le potentiel de différentes métho
 
 ### Jeu de données
 
-Le jeu de donnée utilisé dans ce travail est issu du *REseau de surveillance BENthique*. Ce réseau de surveillance a été créé en 1999 à la suite du naufrage du pétrolier Erika. Le but de ce réseau est d'acquérir des connaissances sur les habitats benthiques côtiers et de détecter des changements de la diversité biologique de ces habitats [@Rebent2016]. Ce protocole de suivis se concentre sur la macrofaune (> 1mm) et la méthodologie détaillée est présentée dans @Boye_2019. Seulement deux de ces habitats ont été retenus pour comparer les trois méthodes de modélisations : les herbiers de zostères et les sédiments meubles nus.
-
-### Communauté faunistique
-
-La communauté faunistique d’intérêt dans ce travail est celle des polychètes. Les polychètes sont des animaux marins du phylum des annélides [@Lecointre_2001]. Cette classe a été choisie, car les animaux la composant ont des modes de vie très divers [@Boye_2019]. Il est classique de catégoriser les polychètes en plusieurs groupes en fonction de leurs modes de vie : certains sont nageurs, ou tubicoles, ou bien encore benthiques fouisseurs. Leurs régimes alimentaires sont aussi très variés, il existe des polychètes prédateurs, mais également des suspensivores ou psamivores [@Jumars_2015]. Toutefois, ces animaux restent assez mal connus par la communauté scientifique [@Troudet_2017].
+Le jeu de donnée utilisé dans ce travail est issu du *REseau de surveillance BENthique*. Ce réseau de surveillance a été créé en 1999 à la suite du naufrage du pétrolier Erika. Le but de ce réseau est d'acquérir des connaissances sur les habitats benthiques côtiers et de détecter des changements de la diversité biologique de ces habitats [@Rebent2016]. Le protocole de suivis se concentre sur la macrofaune (> 1mm) et la méthodologie détaillée est présentée dans @Boye_2019a. Seulement deux de ces habitats ont été retenus pour comparer les trois méthodes de modélisations : les herbiers de zostères et les sédiments meubles nus.
 
 Les zostères sont des phanérogames marines qui lorsque leur densité est forte, créent des "herbiers". En Bretagne, il existe deux espèces de zostères : la zostère marine (*Zostera marina*) et la zostère naine (*Zostera noltii*). Ces herbiers forment des habitats pour de nombreuses espèces. Ils ont un rôle fonctionnel important pour beaucoup d'espèces en tant que zone de nurserie, de reproduction et de nourrissage [@Lefcheck_2019; @McDevitt_Irwin_2016]. Cet habitat est connu pour sa plus grande richesse spécifique par rapport à d'autres habitats comme les sédiments meublent nus [@Hily_1999; @Boye_2017; @Sunday_2016]. Le suivi du *REBENT* se concentre sur les herbiers de *Z. marina*, car cette espèce fait déjà partie du livre rouge des espèces menacées [@Rebent2016; @Waycott_2009]. Toutefois, les mesures de protections mises en place vis-vis de cet habitat semblent porter leurs fruits en Europe [@de_los_Santos_2019].
 
 Les plages de sable abritent des communautés dominées par les crustacés les mollusques et les polychètes [@Defeo_2005]. Cet habitat est contraint principalement par trois facteurs abiotiques : les marées, la houle et le sédiment. L'interaction entre ces trois facteurs crée un grand éventail de plages différentes : de la plage où la mer ne se retire que très peu à marée basse aux plages dont de vastes étendues de sable sont découvertes lors des grandes marées [@Defeo_2005]. La richesse spécifique sur ces plages est fortement influée par la hauteur des marées et dans une moindre mesure par la température de l'eau et la taille des sédiments [@Defeo_2013; @Defeo_2017].  Ces plages de sable fin ont aussi un rôle écologique important de nurserie pour de nombreuses espèces de poissons plats [@Quillien_2017]. Toutefois, les plages de sable sont des biocénoses menacées. Ce sont des habitats à la fois menacés par les changements globaux (hausse du niveau des mers, érosion...) et par les activités anthropiques telles que l'urbanisme ou bien les activités récréatives [@Defeo_2009].
 
-Vingt-trois sites le long de la façade bretonne ont été retenus, représentant 215 échantillons collectés sur une période s'étalant entre 2006 et 2014. Ce jeu de données contient 96 taxa différents. Certains sites ont été échantillonnés deux fois, car présentant les deux habitats. Vingt sites ont été utilisés pour entrainer les différents modèles et trois ont été utilisés pour faire de la validation croisée sur ces mêmes modèles (fig. @fig:sitemap). 
+### Communauté faunistique
+
+Ce travail se concentre sur les assemblages de polychètes,du phylum des annélides [@Lecointre_2001]. Cette classe a été choisie, car les animaux la composant ont des modes de vie très divers, dont l'écologie dans la région a déjà fait l'objet d'un travail plus approfondi que pour d'autres taxons [@Boye_2019a]. Il est classique de catégoriser les polychètes en plusieurs groupes en fonction de leurs modes de vie : certains sont nageurs, ou tubicoles, ou bien encore benthiques fouisseurs. Leurs régimes alimentaires sont aussi très variés, il existe des polychètes prédateurs, mais également des brouteurs, des suspensivores ou psamivores [@Jumars_2015]. Toutefois, la taxonomie et l'écologie de ces animaux restent assez mal connues par la communauté scientifique [@Troudet_2017].
+
+## Emprise spatiale et temporelle de l'étude
+
+Vingt-trois sites le long de la façade bretonne ont été retenus, représentant 215 échantillons collectés sur une période s'étalant entre 2006 et 2014. En ce concentrant sur les polychètes, ce jeu de données contient 96 taxa différents (le jeu de données d'apprentissage ne contient toutefois que 92 taxa). Il est important de noter que certains sites présentent deux habitats dans les mêmes conditions environnementales. Certains sites ont été échantillonnés deux fois, car présentant les deux habitats. Vingt sites ont été utilisés pour entrainer les différents modèles et trois ont été utilisés pour faire une validation croisée de ces modèles (fig. @fig:sitemap). 
 
 ![Carte des sites échantillonnés. Les points bleus et verts représentent respectivement les sites à sédiments meubles et les herbiers. Les points rouges représentent les sites ayant les deux habitats. 1. Sites utilisés pour entrainer les modèles. 2. Sites utilisés pour valider les modèles](figures/site_map.png){#fig:sitemap}
 
 ### Données environnementales 
 
-Six variables environnementales ont été sélectionnées (tableau : {@tbl:env}). La salinité, la température et la vitesse des courants proviennent de la base de données publique *PREVIMER* basée sur les résultats des modèles de *MARS3D*. Le fetch a été calculé à partir des polygones terrestres disponibles dans *OpenStreetMap*. Les variables granulométriques ont été échantillonnées *in situ* (protocole détaillé dans @Boye_2017). Chaque variable environnementale a été centrée et transformée en polynôme de degrés un avant d'être utilisé par les différents modèles. 
+Six variables environnementales, collectées lors de travaux précédents sur ces communautés [@Boye_2019a] ont été sélectionnées pour expliquer les dynamiques (tableau : {@tbl:env}). La salinité, la température et la vitesse des courants proviennent de la base de données publique *PREVIMER* basée sur les résultats des modèles de *MARS3D*. Le fetch a été calculé à partir des polygones terrestres disponibles dans *OpenStreetMap*. Les variables granulométriques ont été échantillonnées *in situ* (protocole détaillé dans @Boye_2017). Il est important de noter que, dans le but d’utiliser des polynômes pour modéliser des relations non linéaires, l’ensemble des variables explicatives ont été centrées et transformées via la fonction poly. Cependant, étant donnée la réduction du jeu de donné à deux habitats et aux polychètes effectués dans le  stage pour limiter le temps de calcul, le nombre d’échantillons final ne m’a pas permis d’utiliser les polynômes au-delà du degré un, ce qui revient à modéliser une simple relation linéaire.
 
 |  Abréviation  |     Définition                             |    Unité    |
 | :------------ | :----------------------------------------- | :---------- |
@@ -142,48 +144,35 @@ Six variables environnementales ont été sélectionnées (tableau : {@tbl:env})
 |   CURR_mean   | Force moyenne des courants                 | m.s^-1^     |
 |   Mud         | Concentration de boue dans les sédiments   | %           |
 |   Trask_So    | Indice de Trask - Homogénéité du sédiment  | Aucune      |
-Table: Variables environnementales utilisées par tous les modèles. {#tbl:env}
+Table: Variables environnementales utilisées dans l'ensemble des modèles. {#tbl:env}
 
-## Modèle de distribution d'espèces conjointes
+## Modèle de distribution d'espèces conjointes (*JSDM*)
 
-Bien que chaque implémentation des *JSDMs* soient différente et permettent de prendre en compte différents types de données (+@tbl:jsdm), ces modèles sont tous des extensions multivariées à variables latentes des modèles linéaires généralisés classiques [@Hui_2016 ; @Ovaskainen_2017a; @Niku_2019; @Chiquet_2019]. Un modèle à variables latentes (*LVM*) simple peut être écrit comme suit (l'ensemble des notations mathématiques sont présentées dans le glossaire) :
+Bien que chaque implémentation des *JSDMs* soit différente et permettent de prendre en compte différents types de données (+@tbl:jsdm), ces modèles sont tous des extensions multivariées à variables latentes des modèles linéaires généralisés classiques [@Hui_2016 ; @Ovaskainen_2017a; @Niku_2019; @Chiquet_2019]. Un modèle à variables latentes (*LVM*) avec une variable explicative peut être écrit comme suit[^2] :
 
 $$ y_{ij} = g\left(m_{ij}\right) = x_{i.} \times \beta_j + Z_{i.} \times \lambda_j $${#eq:lvm} 
 
-Avec $y_{ij}$ représentant l'abondance prédite de l'espèce $i$ au site $j$. $g(m_{ij})$ une fonction de l'abondance moyenne de l'espèce $j$ au site $i$. $x_i$ le vecteur de variable environnementale au site $i$, $\beta_j$ le coefficient de l'effet environnemental pour l'espèce $j$. Et avec $Z_i.$ la matrice de variable latente associée aux sites et $\lambda_j$ la matrice de poids associés à l'espèce $j$.
+[^2]: L'ensemble des notations mathématiques sont présentées dans le glossaire.
 
-La résolution de cette équation n'est possible que si l'on admet des contraintes additionnelles telles que par exemple [@warton2015] : 
+Avec $y_{ij}$ représentant l'abondance prédite de l'espèce $i$ au site $j$. $g(m_{ij})$ une fonction de l'abondance moyenne de l'espèce $j$ au site $i$ ; $x_i$ le vecteur de la variable environnementale au site $i$, $\beta_j$ le coefficient de l'effet environnemental associé pour l'espèce $j$. Enfin, avec $Z_i.$ est la matrice de variable latente associée aux sites et et qui joue le rôle des prédicteurs manquants et $\lambda_j$ la matrice de poids associés à l'espèce $j$ qui donnent une estimation des corrélations résiduelles entre espèces, avec [@warton2015] :
+
 $$\left(Z_i \times \lambda_j\right) \sim \mathcal{N}\left(0, \Omega\right)$$ {#eq:lvmconst}
 
-Avec $\Omega$ la matrice de covariance résiduelle entre espèces qui est estimé à l'aide de la matrice de poids associé aux espèces $\Lambda$.
-
-$$\Omega = \Lambda \Lambda^\prime$$ {#eq:loadings}
-
-Ainsi, les *LVMs* permettent de prendre en compte des éventuelles variables explicatives manquantes tout en estimant la corrélation entre espèces. Un autre avantage des variables latentes est que l'estimation de matrice de corrélation entre espèces est plus simple que par rapport à un modèle linéaire à effets mixtes généralisés. La matrice de coordonnés des espèces ($\lambda$) dans le cas d'un *LVM* a au plus autant de colonnes que de variables latentes (+@eq:lvmconst et @eq:loadings), tandis que dans le cas d'un modèle linéaire à effets mixte généralisé celle-ci à autant de colonnes que d'espèces [@warton2015]. Ainsi, le nombre de variables latentes utilisées par le modèle est donc un paramètre crucial, puisqu'il permet de faire un compromis entre précisions de la matrice de corrélation résiduelle et la réduction du temps de calcul et des degrés de liberté utilisés [@warton2015]. 
-
-|              *Joint species distribution model*           | Effets spatiaux  |  Effets temporels | Traits fonctionnels | Phylogénie  |     Référence     |
-| :-------------------------------------------------------- | :--------------- | :---------------- | :------------------ | :---------- | :---------------- |
-| *Bayesian ordination and regression analysis* (*BORAL*)   |     Implicite    |  Implicite        |         Oui         |    Non      | @Hui_2016         |
-| *Hierachical modelling of Species Communities* (*HMSC*)   |     Explicite    |  Explicite        |         Oui         |    Oui      | @Ovaskainen_2017a |
-| *Generalized linear latent variable models* (*GLLVM*)     |     Implicite    |  Implicite        |         Oui         |    Non      | @Niku_2019        |
-| *Poisson lognormal model* (*PLN*)                         |     Implicite    |  Implicite        |                     |    Non      | @Chiquet_2019     |
-Table: Quelques uns des modèles de *JSDM* et leurs fonctionnalités (adapté de @Ovaskainen_2020). {#tbl:jsdm}
-
-Trois cadres de modélisations ont été sélectionnés : *HMSC*, *GLLVM* et *PLN* et au total cinq variantes de modèles ont été créées. L'ensemble des caractéristiques de ces variantes de modèles sont présentées dans le +@tbl:summarymod .
+Outre la prise en compte via les variables latentes d'éventuelles variables explicatives manquantes et des corrélations résiduelles entre espèces. L'avantage majeur des *LVM* est que l'estimation de matrice de corrélation entre espèces est plus simple que par rapport à un modèle linéaire à effets mixtes généralisés. La matrice de coordonnés des espèces ($\lambda$) dans le cas d'un *LVM* a au plus autant de colonnes que de variables latentes (+@eq:lvmconst). Dans le cas d'un modèle linéaire à effets mixte généralisé celle-ci à autant de colonnes que d'espèces [@warton2015]. Ainsi, le nombre de variables latentes utilisées par le modèle est donc un paramètre crucial, puisqu'il permet de faire un compromis entre précisions de la matrice de corrélation résiduelle et la réduction du temps de calcul et des degrés de liberté utilisés [@warton2015]. Trois cadres de modélisations ont été sélectionnés : *HMSC*, *GLLVM* et *PLN* et au total cinq variantes de modèles ont été créées. L'ensemble des caractéristiques de ces variantes de modèles sont présentées dans le +@tbl:summarymod .
 
 ### *Hierachical modelling of Species Communities*
 
-*HMSC* est un modèle mixte linéaire généralisé, hiérarchique et multivarié, ajusté par inférence bayésienne [@Ovaskainen_2020]. Ce cadre de modélisation rend possible l'utilisation de traits et de la phylogénie pour ajuster les niches abiotiques des taxa. La particularité de ce modèle est qu'il est hiérarchique, ainsi chaque effet aléatoire donne lieu à sa propre matrice de corrélation résiduelle [@Ovaskainen_2017a]. L'+@eq:hmsc présente la formulation mathématique d'un modèle n'utilisant que des variables environnementales et un nombre $n_r$ d'effets aléatoires. En plus des effets aléatoires classiques, ce cadre de modélisation permet de prendre en compte des effets aléatoires spatiaux et temporels.
+*HMSC* est un modèle mixte linéaire généralisé, hiérarchique et multivarié, ajusté par inférence bayésienne [@Ovaskainen_2020]. La particularité de ce modèle est qu'il est hiérarchique, ainsi chaque effet aléatoire donne lieu à sa propre matrice de corrélation résiduelle [@Ovaskainen_2017a] et qu'il peut s'implémenter avec une vaste gamme de distribution [@Tikhonov_2019b]. L'+@eq:hmsc présente la formulation mathématique d'un modèle n'utilisant que des variables environnementales et un nombre $n_r$ d'effets aléatoires (il serait aussi possible d'ajouter des données de traits et de phylogénie pour mieux ajuster les niches abiotiques des taxa).
 
 $$ y_{ij} = g\left(m_{ij}\right) = x_i \times \beta_j + \sum_{r = 1}^{n_r} Z_{ir} \times \lambda_{rj} $$ {#eq:hmsc}
 
 Etant un modèle bayésien, la distribution a posteriori est échantillonnée grâce à la méthode MCMC [@Ovaskainen_2017b]. L'utilisation de l'inférence bayésienne permet à l'utilisateur de ne pas spécifier le nombre de variables latentes à utiliser pour chaque effet aléatoire. Le modèle ajuste le nombre de variables latentes pour que celles non significatives soient tronquées [@Ovaskainen_2020].
 
-Trois modèles *HMSC* ont été créés : un premier sans l'inclusion d'effets aléatoires (*HMSC_reg*), un second avec un seul effet aléatoire lié à l'échantillon (*HMSC_samp*) et un dernier avec trois facteurs aléatoires liés respectivement à l'année, au site et à l'habitat. Les calculs ont été réalisés avec le package *Hmsc* [@Tikhonov_2019b; @Hmsc_2019]. Chaque modèle dispose de quatre chaînes de Markov et chaque chaîne effectue 1,5 million d'itérations avant de se stopper. L’étape de *burning* supprime les 500 000 premières itérations de chaque chaîne.  Les chaînes sont échantillonnées toutes les mille itérations. Les priors par défaut ont été utilisés. Avant de regarder les résultats des différents modèles du framework *HMSC*, la validité de ces modèles a été inspectée. La bonne convergence des chaînes a été vérifiée à l'aide de l'outil de diagnostic de Gelman-Rubin [@Gelman_1992]. Enfin, le nombre d'échantillons indépendants pour chaque paramètre a été jugé satisfaisant.
+Trois modèles *HMSC* ont été créés : un premier sans l'inclusion d'effets aléatoires (*HMSC_reg*) qui ne prend donc pas en compte les corrélations résiduelles entre espèces et l'aspect eltonien de leur niche, un second avec un seul effet aléatoire lié à l'échantillon (*HMSC_samp*) et un dernier avec trois facteurs aléatoires liés respectivement à l'année, au site et à l'habitat. Ce dernier modèle permet ainsi de partitionner les associations résiduelles entre association temporelle, spatiale ou liée à l'habitat (sédiment nu ou herbiers). Les calculs ont été réalisés avec le package *Hmsc* [@Tikhonov_2019b; @Hmsc_2019]. Chaque modèle dispose de quatre chaînes de Markov et chaque chaîne effectue 1,5 million d'itérations avant de se stopper. L’étape de *burning* supprime les 500 000 premières itérations de chaque chaîne.  Les chaînes sont échantillonnées toutes les mille itérations. Les priors par défaut ont été utilisés. Avant de regarder les résultats des différents modèles du framework *HMSC*, la validité de ces modèles a été inspectée. La bonne convergence des chaînes a été vérifiée à l'aide de l'outil de diagnostic de Gelman-Rubin [@Gelman_1992]. Enfin, le nombre d'échantillons indépendants pour chaque paramètre a été jugé satisfaisant (supérieur à 1000 échantillons indépendants pour l'ensemble des paramètres).
 
 ### Modèle de Poisson Lognormal
 
-Le modèle de Poisson lognormal est modèle linéaire mixte et multivarié. Il ne peut modéliser qu'une seule sorte de distribution : la distribution (conditionnelle) de Poisson lognormal +@eq:pln [@Aitchison_1989; @Chiquet_2019]. Un modèle simple avec uniquement des variables environnementales peut être écrit de cette façon :
+Le modèle de Poisson lognormal est modèle linéaire mixte et multivarié. Son implémentation ne permet de modéliser qu’une seule sorte de distribution : la distribution (conditionnelle) de Poisson lognormale +@eq:pln [@Aitchison_1989; @Chiquet_2019]. Un modèle simple avec uniquement des variables environnementales peut être écrit de cette façon :
 
 $$y_{ij}|Z_{ij} \sim \mathcal P\left(exp\left\{x_i \times \beta_j + Z_{ij}\right\}\right)$$ {#eq:pln}
 
@@ -191,11 +180,11 @@ Le vecteur latent $Z_i$ prend en compte les variations d'abondance non expliqué
 
 $$Z_i \sim N\left(0_{n_s}, \Omega^{-1}\right) $$ {#eq:constpln}
 
-Le modèle a été créé avec le package R *PLNmodels* [@Chiquet_2019]. Le modèle utilise une distribution de Poisson lognormal et aucun terme d'offset n'a été ajouté au modèle. Les paramètres par défaut ont également été utilisés pour ajuster le modèle.
+Le modèle a été créé avec le package R *PLNmodels* [@Chiquet_2019]. Pour comparer avec les autres implémentations des JSDM testées ici, aucun terme d’offset n’a été ajouté au modèle. Les paramètres par défaut ont également été utilisés pour ajuster le modèle.
 
 ### *Generalized linear latent variable models*
 
-*GLLVM* est un modèle mixte linéaire généralisé et multivarié ajusté par la méthode du maximum de vraisemblance. Ce cadre de modélisation prend en compte l'utilisation de variables environnementale et peut également inclure des traits. Un modèle ajusté avec ce type de modèle sans traits peut être écrit comme l'+@eq:lvm. Ce modèle présente une manière innovante de maximiser la vraisemblance en utilisant une approximation variationnelle gaussienne de la log-vraisemblance pour le cas où la fonction de lien serait des données de comptage surdispersé, binaires ou encore ordinales [@Niku_2019]. Cette méthode de maximisation de la log-vraisemblance permet d'accélérer les calculs. Comparativement à Boral [@Hui_2016], *GLLVM* peut réaliser les mêmes calculs en quelques minutes au lieu de quelques heures. Contrairement à HMSC, *GLLVM* demande à l'utilisateur de choisir le nombre de variables latentes qu'utilisera le modèle [@Gllvm_2019].
+*GLLVM* est un modèle mixte linéaire généralisé et multivarié ajusté par la méthode du maximum de vraisemblance qui peut être écrit comme +@eq:lvm. Ce modèle présente une manière innovante de maximiser la vraisemblance en utilisant une approximation variationnelle gaussienne de la log-vraisemblance pour le cas où la fonction de lien serait des données de comptage surdispersé, binaires ou encore ordinales [@Niku_2019]. Cette méthode de maximisation de la log-vraisemblance permet d’accélérer les calculs. Par exemple, comparativement à une autre implémentation, Boral [@Hui_2016], d’un même modèle, GLLVM ne requiert que quelques minutes au lieu de quelques heures. En revanche, et contrairement à HMSC qui l’estime ou PLN qui a une valeur fixe, GLLVM demande à l’utilisateur de choisir le nombre de variables latentes qu’utilisera le modèle [@Gllvm_2019].
 
 Le modèle a été créé avec le package R *gllvm* [@Niku_2019; @Gllvm_2019]. Le modèle utilise une distribution négative binomiale et vingt variables latentes. 
 
@@ -204,52 +193,48 @@ Le modèle a été créé avec le package R *gllvm* [@Niku_2019; @Gllvm_2019]. L
 | HMSC_reg      | HMSC      | Poisson lognormal        | 0                               | $0$                          |
 | HMSC_samp     | HMSC      | Poisson lognormal        | 1                               | $n_l \in \mathbb{N}^*$       |
 | HMSC_hier     | HMSC      | Poisson lognormal        | 3                               | $n_l \in \mathbb{N}^*$       |
-| PLN           | PLN       | Poisson lognormal        | 1                               | $n_l \in \mathbb{N}^*$       |
+| PLN           | PLN       | Poisson lognormal        | 1                               | $n_l = 92$       |
 | GLLVM         | GLLVM     | Negative binomial        | 0                               | $20$                         |
-Table: Descriptif des modèles utilisés. ^*^ Lorsque des effets aléatoires sont définis pour les modèles HMSC, un nombre infini de variables latentes peut être généré, seules les variables latentes latentes sont conservées (voir @Bhattacharya_2011 pour plus d'informations). {#tbl:summarymod}
+Table: Descriptif des modèles utilisés. $^*$ Lorsque des effets aléatoires sont définis pour les modèles HMSC, un nombre infini de variables latentes peut être généré, seules les variables latentes importantes sont conservées (voir @Bhattacharya_2011 pour plus d'informations). {#tbl:summarymod}
 
 ## Reconstruction des réseaux d'interactions
 
-Les réseaux d'interactions sont reconstruits pour chaque modèle à grâce au package *EMtree*. Le principe de l'algorithme contenu dans ce package est d'inférer des interactions entre espèces en utilisant des arbres couvrants (graphes connectant tous les noeuds sans aucune boucle). La probabilité conditionnelle $P$ d'une arrête entre les espèces $j$ et $k$ est décrite dans ce modèle comme la somme des probabilités conditionnelles des arbres la contenant. Ainsi la probabilité qu'une arrête fasse partie du réseau d'intérêt est simplement sa probabilité conditionnelle moyennée par le nombre d'abers couvrant [@Momal_2020].
+Les réseaux d’interactions sont reconstruits à partir des matrices de corrélations résiduelles issues de chaque modèle grâce au package EMtree. Le principe de l’algorithme contenu dans ce package est d’inférer des interactions entre espèces en utilisant des arbres couvrants (graphes connectant tous les noeuds sans aucune boucle). La probabilité conditionnelle  d’une arrête entre les espèces  et  est décrite dans ce modèle comme la somme des probabilités conditionnelles des arbres la contenant. Ainsi la probabilité qu’une arrête fasse partie du réseau d’intérêt est simplement sa probabilité conditionnelle moyennée par le nombre d’abres couvrant [@Momal_2020].
 
-Pour mettre en place cet algorithme, le package maximise l'équation de log-vraisemblance suivante
-
-$$\mathcal L = \sum_{1\leq j < k \leq p} P_{jk} log\left(\beta_{jk}\widehat{\psi_{jk}}\right) - logB - cst$$ {#eq:emtree}
-
-où $\beta_{jk}$ est le poids contrôlant la probabilité de l'arrête ($j,k$) de faire partie du réseau d'interaction, $B$ une constante de normalisation et $\widehat{\psi_{j,k}}$ qui résume l'information apporté par les données d'abondance à propos de l'arrête ($j, k$). Ainsi, les matrices de corrélations résiduelles interspécifiques de chaque modèle servent à initialiser l'algorithme pour les valeurs de $\widehat{\psi_{j,k}}$.
-
-## Critères de comparaison entre les méthodes
+## Critères de comparaison des modèles implémentés
 
 ### Pouvoir explicatif
 
-Le pouvoir explicatif de chaque modèle pour chaque taxon est donné par une mesure de pseudo-*R^2^*, dénommé après *SR^2^*. Pour les modèles de Poisson, le *SR^2^* est basé sur la mesure de la corrélation de Spearman entre les données d'abondance observées et prédites [@Ovaskainen_2020]. Cette mesure est calculée de la façon suivante pour l'espèce $j$ :
+Le pouvoir explicatif de chaque modèle pour chaque taxon est donné par une mesure de pseudo-*R^2^*, dénommé après *SR^2^*. Ainsi, pour la distribution de Poisson, HMSC estime le *SR^2^* comme la corrélation de Spearman entre les données d’abondance observées et prédites [@Ovaskainen_2020]. Cette mesure est calculée de la façon suivante pour l’espèce $j$ :
 
 $$ SR^2_j = sgn\left(r_s\left(y_{.j}, \hat{y}_{.j}\right)\right) \times r_s\left(y_{.j}, \hat{y}_{.j}\right)^2 $$ {#eq:eq2}
 
+Cette même mesure a été appliquée sur l’ensemble des autres modèles.
+
 ### Validation croisée
 
-Parmi les vingt-trois sites étudiés, trois ont été utilisés pour effectuer de la validation croisée sur les modèles. Deux sites présentent les deux habitats et le dernier présente uniquement des sédiments meubles. La performance des modèles a été comparée sur deux critères : la prédiction de l'abondance de chaque espèce et la prédiction de leur occurrence. 
+Parmi les vingt-trois sites étudiés, trois ont été utilisés pour effectuer de la validation croisée sur les modèles. Deux de ces trois sites présentent les deux habitats et le dernier présente uniquement des sédiments meubles. La performance des modèles a été comparée sur deux critères : la prédiction de l'abondance de chaque espèce et la prédiction de leur occurrence. 
 
 ### Prédiction de l'abondance
 
-Chaque modèle entrainé a été utilisé pour prédire l'abondance des espèces présentes dans les trois sites de validation. La qualité de la prédiction a été évaluée par l'erreur quadratique moyenne (*RMSE*).
+Chaque modèle entrainé a été utilisé pour prédire l'abondance des espèces présentes dans les trois sites de validation. La qualité de la prédiction a été évaluée par la racine carrée de l'erreur quadratique moyenne (*RMSE*).
 
 #### Prédiction de l'occurrence
 
-Pour prédire l'occurrence de chaque espèce à partir des données d'abondance, un seuil a été établi. Une espèce est considérée comme présente dans un site dès lors que son abondance est supérieure ou égale à celle qui maximise le J de Youden dans l'espace de la courbe *ROC*. Cette statistique du *J de Youden* a été utilisée, car elle prend en compte à la fois la sensibilité et la spécificité.
+Pour prédire l'occurrence de chaque espèce à partir des données d'abondance, il a été décidé d'établir un seuil limite pour lequel l'abondance prédite ne pouvait pas présenter une occurrence, car cette abondance était beaucoup trop faible par rapport à l'abondance observée de cette espèce. Afin de définir ce seuil pour chaque espèce, une première étape consiste à créer *ROC* de l'occurrence à partir de différents seuils d'abondance. Puis, pour chaque courbe *ROC* le *J* de Youden a été calculé et la valeur maximale de cet indice a donné le seuil de l'abondance à dépasser pour compter une occurrence.   Cette statistique du *J de Youden* a été utilisée, car elle prend en compte à la fois la sensibilité et la spécificité des modèles.
 
 ### Comparaison des réseaux inférés
 
-Les réseaux reconstruits sont comparés à l'aide des outils de la théorie des graphes appliqués aux graphes probabilistes [@Poisot_2015]. Ces outils sont issus du package EcologicalNetworks.jl [@Poisot_2019]. Quatre métriques ont été sélectionnées : le nombre de liens, la connectance, la centralité de Katz et l'emboitement. Le nombre de liens et la connectance sont des propriétés fondamentales de la structure des réseaux trophiques et des réseaux d'interactions [@Martinez_1992]. Par exemple, la résistance d'un réseau écologique aux perturbations est par  proportionnelle à sa connectance. La connectance est le nombre de liens $l$ divisé par le nombre de liens possibles $(S\times(S-1)/2)$, cette mesure est comprise entre 0 et 1. La centralité de Katz permet de connaître l'importance de chaque espèce dans le réseau. L’emboitement d'un réseau $\eta$ est une mesure indiquant si les espèces forment des petits groupes dans le réseau faisant partie de plus gros groupes. Cette mesure est comprise entre 0 et 1. L'hypothèse a été faite que des réseaux fortement imbriqués promeuvent une plus grande diversité en minimisant la compétition [@Bastolla_2009].[^2]
+Les réseaux reconstruits sont comparés à l'aide des outils de la théorie des graphes appliqués aux graphes probabilistes [@Poisot_2015]. Ces outils sont issus du package EcologicalNetworks.jl [@Poisot_2019]. Quatre métriques ont été sélectionnées : le nombre de liens, la connectance, la centralité de Katz et l'emboitement. Le nombre de liens et la connectance sont des propriétés fondamentales de la structure des réseaux trophiques et des réseaux d'interactions [@Martinez_1992]. Par exemple, la résistance d'un réseau écologique aux perturbations est par  proportionnelle à sa connectance. La connectance est le nombre de liens $l$ divisé par le nombre de liens possibles $(S\times(S-1)/2)$, cette mesure est comprise entre 0 et 1. La centralité de Katz permet de connaître l'importance de chaque espèce dans le réseau. Un réseau fortement emboîté indique que les espèces spécialistes interagissent avec d'autres espèces spécialistes et les espèces généralistes interagissent avec toutes les espèces. Au contraire, un réseau faiblement emboîté sera plus modulaire et aura des groupes d'espèces en fortes interactions entre elles et interagissant faiblement avec les autres groupes. Cette mesure est comprise entre 0 et 1. Cette mesure de l'imbrication est importante pour comprendre la dynamique d'un réseau d'interaction, car l'hypothèse a été faite que des réseaux fortement imbriqués promeuvent une plus grande diversité en minimisant la compétition [@Bastolla_2009].[^3]
 
-[^2]: Pour le calcul de la centralité de Katz et de l'imbrication, se référé à @Poisot_2019 .
+[^3]: Pour le calcul de la centralité de Katz et de l'imbrication, se référé à @Poisot_2019 .
 
 
-Pour tous les modèles incluant au moins une variable latente, un réseau a été reconstruit grâce à la matrice de $\Omega$. Pour la méthode HMSC_hier, un réseau par effet aléatoire a été reconstruit, chaque effet aléatoire ayant sa propre matrice $\Omega$. Un méta-réseau moyennant les probabilités de chaque méthode a également été créé. L'ensemble des différents réseaux sont représentés en annexe [NDR : Ajouter en annexes].
+Pour tous les modèles incluant au moins une variable latente (tous sauf *HMSC_reg*), un réseau a été reconstruit grâce à la matrice $\Omega$ . Pour la méthode *HMSC_hier*, un réseau a été reconstruit pour chaque effet aléatoire, chacun ayant sa propre matrice . Un méta-réseau a également été créé en moyennant les probabilités sur l’ensemble des méthodes. L’ensemble des différents réseaux sont représentés en annexe [NDR : Ajouter en annexes].
 
 ### Validation par experts
 
-Douze paires d'interactions ont été soumises à un panel de cinq experts en polychètes. Les experts ont évalué la vraisemblance de chaque interaction sur une échelle de 0 à 4 :
+Douze paires d'interactions ont été soumises à un panel de cinq experts des polychètes. Les experts ont évalué la vraisemblance de chaque interaction sur une échelle de 0 à 4 :
 
 0. Ces deux taxa n'interagissent pas ;
 
@@ -261,7 +246,7 @@ Douze paires d'interactions ont été soumises à un panel de cinq experts en po
 
 4. Ces deux taxa interagissent.
 
-Les experts ont effectué cette évaluation sans avoir connaissance des probabilités d'interactions calculées par les modèles. A cause du petit nombre d'expert, les réponses ont été aggrégés en trois catégories : interaction possible, interaction impossible et ne se prononce pas. La concordance de l'avis des experts a été mesurée à l'aide de l'indice de concordance le $W$ de Kendall [@Legendre_2005]. Enfin, les experts ont donnés leur avis sur la qualité des réseaux reconstruits par la méthode *EMtree*.
+Les experts ont effectué cette évaluation sans avoir connaissance des probabilités d’interactions inférées par les modèles. Du fait du petit nombre d’experts, les réponses ont été agrégées en trois catégories : interaction possible, interaction impossible et ne se prononce pas. La concordance de l’avis des experts a été mesurée à l’aide du $W$ de Kendall [@Legendre_2005]. Enfin, les experts ont aussi été interrogés de manière plus qualitative sur la vraisemblance des réseaux reconstruits par la méthode *EMtree*.
 
 ## Matériel informatique logiciels utilisés
 
@@ -329,7 +314,7 @@ Tous les réseaux probabilistes reconstruits présentent le même nombre de lien
 |HMSC_hier_site    | $12,46$    |   $0,021\pm 0,15$  | $0,03$    |
 |HMSC_hier_habitat | $13,11$    |   $0,021\pm 0,15   | $0,03$    |
 |HMSC_hier_moyen   | $13,07$    |   $0,021\pm 0,15$  | $0,03$    |
-|GLLVM             | $12,51$    |   $0,021\pm 0,15$  | $0.04     |
+|GLLVM             | $12,51$    |   $0,021\pm 0,15$  | $0.04$    |
 |PLN               | $12,60$    |   $0,022\pm 0,001$ | $0.04$    |
 Table: Métrique des réseaux d'interactions reconstruits. $\sigma_l$ représente l'écart-type du nombre de liens. Connectance $\pm$ écart-type. $\eta$ imbrication des réseaux trophiques. {#tbl:metrics}
 
