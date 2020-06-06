@@ -6,7 +6,7 @@
 
 **Indices**
 
-|  Indice et plage de valeur  |             Désigne         |
+|  Indice et plage de valeurs  |             Déscription         |
 | :-------------------------- | :---------------------------|
 | $i = 1, \dots, n$           |  Unité d'échantillonnage    |
 | $j = 1, \dots, n_s$         |  Espèce                     |
@@ -15,30 +15,30 @@
 
 **Vecteurs et matrices**
 
-|              Matrice        |                     Désigne                       |
-| :-------------------------- | :------------------------------------------------ |
-| $Y, y_{ij}$                 |  Données d'abondance communauté                   |
-| $\hat{Y}, \hat{y}_{ij}$     |  Abondance estimée                                |
-| $m$                         |  Abondance moyenne                                | 
-| $X, x_{ij}$                 |  Données environmentales                          |
-| $B, \beta_{ij}$             |  Coefficient associé à la niche  environnementale |
-| $Z, z_{ij}$                 |  Variable latente (coordonnés de sites)           |
-| $\Lambda, \lambda_{ij}$     |  Facteur latent (coordonnés d'espèces)            |
-| $\Omega, \omega_{ij}$       |  Corrélations résiduelles interspécifique         |
+|              Matrice        |                     Description                    |
+| :-------------------------- | :------------------------------------------------- |
+| $Y, y_{ij}$                 |  Abondances observées                              |
+| $\hat{Y}, \hat{y}_{ij}$     |  Abondances estimées                               |
+| $m$                         |  Abondances moyennes                               | 
+| $X, x_{ij}$                 |  Données environnementales                         |
+| $B, \beta_{ij}$             |  Coefficients associés à la niche environnementale |
+| $Z, z_{ij}$                 |  Variables latentes (coordonnés de sites)          |
+| $\Lambda, \lambda_{ij}$     |  Facteurs latents (coordonnés d'espèces)           |
+| $\Omega, \omega_{ij}$       |  Corrélations résiduelles interspécifiques         |
 
 **Fonction et distribution statistique**
 
-|  Fonction / Distribution statistique  |             Désigne                               |
+|  Fonction / Distribution statistique  |             Description                           |
 | :------------------------------------ | :------------------------------------------------ |
 | $g(.)$                                |  Fonction de lien d'un modèle linéaire généralisé |
-| $\mathcal L$                          |  Fonction de log-vraissemblance                   |
-| $sng(.)$                              |  Fonction signe                                   |
-| $\mathcal P(.)$                       |  Distribution de Poisson lognormal                |
+| $\mathcal L$                          |  Fonction de log-vraisemblance                   |
+| $sgn(.)$                              |  Fonction signe                                   |
+| $\mathcal P(.)$                       |  Distribution de Poisson log-normale              |
 | $\mathcal N(.)$                       |  Distribution normale                             |
 
 **Divers**
 
-|     Divers     |              Désigne               |
-| :------------- | :--------------------------------- |
-| $y_{.j}$       | Vecteur de l'abondance du site $j$ |
+|     Divers     |              Description               |
+| :------------- | :-------------------------------------------------------------- |
+| $y_{.j}$       | Vecteur de l'abondance de l'espèce $j$ à travers tous les sites |
 | $r_s$          | Corrélation de Spearman            |
