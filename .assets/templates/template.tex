@@ -22,6 +22,9 @@ $for(polyglossia-otherlangs)$
   \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
 $endfor$
 
+% Change caption name for table env
+\gappto\captions$polyglossia-lang.name${\renewcommand{\tablename}{$tablenos-caption-name$}}
+
 %% Package fontspec
 \usepackage{fontspec}
 \setmainfont{STIX2Text-Regular}[
