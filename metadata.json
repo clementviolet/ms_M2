@@ -1,5 +1,5 @@
 {
-  "title": "Mémoire Stage M2",
+  "title": "Caractériser la contribution des facteurs environnementaux et des interactions biotiques à la variabilité des assemblages benthiques",
   "upload_type": "masterthesis",
   "access_right": "open",
   "license": "CC-BY",
@@ -12,11 +12,14 @@
       "orcid": "0000-0001-6217-5891"
     }
   ],
-  "description": "Mémoire Stage M2",
+  "description": "Caractériser la contribution des facteurs environnementaux et des interactions biotiques à la variabilité des assemblages benthiques",
   "keywords": ["Réseaux écologique, Inférence de réseaux, JSDM"],
   "filename": "ms_M2",
   "link-citations": true,
   "tablenos-plus-name": "tableau",
   "tablenos-star-name": "Tableau",
-  "tablenos-caption-name": "Tableau"
+  "tablenos-caption-name": "Tableau",
+  "fignos-caption-name": "Figure",
+  "fignos-plus-name": "figure",
+  "fignos-star-name": "Figure"
 }
