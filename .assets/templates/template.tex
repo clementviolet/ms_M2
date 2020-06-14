@@ -1,4 +1,13 @@
 %!TEX TS-program = lualatex
+%
+%
+%
+%
+%
+%
+%
+%
+%
 \documentclass[$if(fontsize)$$fontsize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
 %% Package geometry
@@ -156,7 +165,16 @@ $else$
 $endif$
 
 \usepackage{caption}
-\usepackage{cleveref}
+\usepackage[$if(capitalize)$capitalise$endif$]{cleveref}
+\makeatletter
+\if@cref@capitalise
+\crefname{figure}{Figure}{Figure}
+\crefname{table}{Tableau}{Tableau}
+\else
+\crefname{figure}{figure}{figure}
+\crefname{table}{tableau}{tableau}
+\fi
+\makeatother
 
 %% Table
 \usepackage{longtable}
@@ -286,14 +304,6 @@ $if(title)$
 
 \restoregeometry
 $endif$
-
-%{\small
-%$for(creators)$
-%author{$creators.givennames$ \textsc{$creators.familyname$}}
-%\textsc{$creators.givennames$\,$creators.familyname$}\\
-%\emph{$creators.affiliation$}\hfill\texttt{$creators.orcid$}
-%$endfor$
-%}
 
 % Roman numbering for content before toc and toc itself
 \cleardoublepage 
