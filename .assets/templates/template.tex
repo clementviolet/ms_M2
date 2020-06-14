@@ -288,13 +288,19 @@ $if(title)$
 	\vfill
 	\large Encadrants :\par
 	\vspace{0.5cm}
+	% \begin{tabular}{l}
+	% \large \textbf{Dr Martin Marzloff}, \emph{IFREMER}, LEBCO Brest \\
+	% \large Dr. Aurélien \textsc{Boyé}, \emph{IFREMER} , LEBCO, Brest \\
+	% \large Dr. Olivier \textsc{Gauthier}, \emph{IUEM}, LEMAR, Brest\\
+	% \large Dr. Jacques \textsc{Grall}, \emph{IUEM}, Observatoire Marin, Brest\\
+	% \end{tabular}
+	%
 	\begin{tabular}{l}
-	\large \textbf{Dr Martin Marzloff}, \emph{IFREMER}, LEBCO Brest \\
-	\large Dr. Aurélien \textsc{Boyé}, \emph{IFREMER} , LEBCO, Brest \\
-	\large Dr. Olivier \textsc{Gauthier}, \emph{IUEM}, LEMAR, Brest\\
-	\large Dr. Jacques \textsc{Grall}, \emph{IUEM}, Observatoire Marin, Brest\\
+	$for(supervisors)$
+	\large $supervisors.title$ $supervisors.givennames$, \emph{$supervisors.affiliation$}, $supervisors.lab$, $supervisors.city$\\
+	$endfor$
 	\end{tabular}
-	
+
 	\vfill
 
 % Bottom of the page

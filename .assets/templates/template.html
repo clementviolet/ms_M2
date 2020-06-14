@@ -23,6 +23,15 @@
                </div>
                $endfor$
             </section>
+            <section class="supervisors">
+               $for(supervisors)$
+               <div class="supervisor">
+                  <div class="author">$supervisors.title$ $supervisors.givennames$ $supervisors.familyname$</div>
+                  <div class="affiliation"><i>$supervisors.affiliation$</i>, $supervisors.lab$, $supervisors.city$</div>
+                  <div class="orcid">$supervisors.orcid$</div>
+               </div>
+               $endfor$
+            </section>
             <summary>
                $description$
                <!--<div class="keywords">-->

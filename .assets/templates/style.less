@@ -6,6 +6,7 @@
 @url-color: #428bca;
 @url-color-hover: darken(@url-color, 15%);
 @ref-color: #e9380c;
+@ref-color2: #6e200c;
 @meta-color: #a0a8a3;
 
 body {
@@ -111,6 +112,18 @@ table th {
          color: darken(@meta-color, 10%);
       }
       .author{color: @ref-color; font-weight: 600;}
+      .orcid{padding-left: 2em; font-family: @code-font-stack; float: right;}
+   }
+}
+
+.supervisors{
+   .supervisor {
+      margin-bottom: 0.5em;
+      .author, .affiliation, .orcid {
+         display: inline-block;
+         color: darken(@meta-color, 10%);
+      }
+      .author{color: @ref-color2; font-weight: 600;}
       .orcid{padding-left: 2em; font-family: @code-font-stack; float: right;}
    }
 }
