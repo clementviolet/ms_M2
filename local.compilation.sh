@@ -16,18 +16,18 @@ python .assets/scripts/bibliography.py
 
 # Adding mandatory files
 mkdir -p rendered
+mkdir -p rendered/css
 cp -r figures rendered/
 mv references.json rendered/
 
 # Create tex file
 echo "TeX document"
 pandoc thanks_glossary_math.md -s -o rendered/thanks_glossary_math.tex --template=.assets/templates/raw.tex
-python .assets/scripts/longtablealign.py
+python .assets/scripts/longtablealign.py #left align table in the glossary
 pandoc manuscript.md -s -o rendered/$repo.tex --include-before-body=rendered/thanks_glossary_math.tex --filter pandoc-xnos --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --template=.assets/templates/template.tex
 
 # Create html file
 echo "HTML document"
-mkdir -p rendered/css/
 cp .assets/templates/style.less rendered/css/
 pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --webtex
 
@@ -35,16 +35,13 @@ pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pa
 echo "MS Word document"
 pandoc thanks_glossary_math.md manuscript.md -s -o rendered/$repo.docx --toc --filter pandoc-xnos --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json
 
-# Fix the issue with longtable package
-
-python .assets/scripts/longtablefix.py
-
 # Create pdf file
+python .assets/scripts/cleverefcapitalisefix.py # Fix the issue with cleveref
+python .assets/scripts/longtablesmall.py # Fix the issue with longtable package and set font size on small
 cd rendered
 echo "PDF Document"
 latexmk $repo.tex -lualatex --file-line-error --interaction=nonstopmode
-
-# Cleaning up
-latexmk -c
+latexmk -c # Cleaning up
 rm -Rf figures references.json
+rm -f references.json
 cd ..
