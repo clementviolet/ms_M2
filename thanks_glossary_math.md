@@ -1,6 +1,6 @@
 # Remerciements
 
-# Glossaire
+Je souhaiterai remercier en premier lieu mon encadrant principal, Martin Marzloff pour avoir eu la gentillesse de m'accepter en stage à ses côtés. Je souhaite le remercier chaleureusement, lui et Aurélien Boyé pour avoir patiemment répondu à mes trop nombreuses questions tout au long de stage et pour les abondants commentaires qui ont grandement amélioré la qualité de ce manuscrit. Je remercie également Olivier Gauthier pour les heures de discussion passées à décortiquer les modèles dont il est question dans ce manuscrit, ces discussions m'ont permis d'encore approfondir mes connaissances en statistiques. Enfin Jacques Grall pour avoir répondu à mes questions sur la biologie et les interactions que peuvent entretenir ces animaux. Pour finir, je souhaiterai remercier tous les experts des polychètes que j'ai interrogés, sans qui une grande partie de ce travail n'aurait été possible.
 
 # Notations mathématiques
 
