@@ -57,9 +57,9 @@ jobs:
           python .assets/scripts/longtablesmall.py
       - name: Create the website
         run: |
-          pandoc thanks_glossary_math.md manuscript.md -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --webtex
+          pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --include-in-header=.assets/templates/tocify
           mkdir rendered/css/
-          cp .assets/templates/style.less rendered/css/
+          cp .assets/templates/{style.less,jquery.tocify.css,bootstrap.css} rendered/css/
       - name: Build Word document
         run: pandoc thanks_glossary_math.md manuscript.md -s -o rendered/${{ env.repo_name }}.docx --filter pandoc-xnos --bibliography=references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json
       - name: Build the pdf
