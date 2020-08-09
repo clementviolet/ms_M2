@@ -1,0 +1,50 @@
+\selectlanguage *{french}
+\contentsline {section}{Remerciements}{i}{section*.1}%
+\contentsline {section}{Notations mathématiques}{i}{section*.2}%
+\contentsline {section}{Introduction}{1}{section*.3}%
+\contentsline {subsection}{Prédire la distribution d'une espèce}{2}{subsection*.4}%
+\contentsline {subsection}{Prédire la distribution et les dynamiques des assemblages d'espèces}{2}{subsection*.5}%
+\contentsline {subsection}{Comprendre le rôle des interactions biotiques}{3}{subsection*.6}%
+\contentsline {subsection}{Objectifs scientifiques}{4}{subsection*.7}%
+\contentsline {section}{Matériel et méthode}{5}{section*.8}%
+\contentsline {subsection}{Cas d'étude}{5}{subsection*.9}%
+\contentsline {subsubsection}{Jeu de données}{5}{subsubsection*.10}%
+\contentsline {subsubsection}{Communauté faunistique}{6}{subsubsection*.11}%
+\contentsline {subsection}{Emprise spatiale et temporelle de l'étude}{6}{subsection*.12}%
+\contentsline {subsubsection}{Données environnementales}{7}{subsubsection*.14}%
+\contentsline {subsection}{Modèle de distribution d'espèces conjointes (\emph {JSDM})}{7}{subsection*.15}%
+\contentsline {subsubsection}{\emph {Hierachical modelling of Species Communities}}{8}{subsubsection*.16}%
+\contentsline {subsubsection}{Modèle de Poisson Lognormal}{9}{subsubsection*.17}%
+\contentsline {subsubsection}{\emph {Generalized linear latent variable models}}{9}{subsubsection*.18}%
+\contentsline {subsection}{Reconstruction des réseaux d'interactions}{10}{subsection*.19}%
+\contentsline {subsection}{Critères de comparaison des modèles implémentés}{10}{subsection*.20}%
+\contentsline {subsubsection}{Pouvoir explicatif}{10}{subsubsection*.21}%
+\contentsline {subsubsection}{Validation croisée}{11}{subsubsection*.22}%
+\contentsline {paragraph}{Prédiction de l'abondance}{11}{paragraph*.23}%
+\contentsline {paragraph}{Prédiction de l'occurrence}{11}{paragraph*.24}%
+\contentsline {subsubsection}{Comparaison des réseaux inférés}{11}{subsubsection*.25}%
+\contentsline {subsubsection}{Validation par experts}{12}{subsubsection*.26}%
+\contentsline {subsection}{Matériel informatique logiciels utilisés}{13}{subsection*.27}%
+\contentsline {section}{Résultats}{13}{section*.28}%
+\contentsline {subsection}{Comparaison des performances des modèles}{13}{subsection*.29}%
+\contentsline {subsubsection}{Pouvoir explicatif}{13}{subsubsection*.30}%
+\contentsline {subsubsection}{Prédiction de l'occurrence et de l'abondance}{14}{subsubsection*.32}%
+\contentsline {paragraph}{Abondance}{14}{paragraph*.33}%
+\contentsline {paragraph}{Occurrence}{14}{paragraph*.34}%
+\contentsline {subsection}{Effets de l'environnement}{18}{subsection*.38}%
+\contentsline {subsection}{Réseaux reconstruits}{19}{subsection*.40}%
+\contentsline {subsubsection}{Analyse des graphes}{19}{subsubsection*.41}%
+\contentsline {subsubsection}{Avis des experts du taxon des polychètes}{22}{subsubsection*.44}%
+\contentsline {subsection}{Coût de calcul}{23}{subsection*.46}%
+\contentsline {section}{Discussion}{24}{section*.47}%
+\contentsline {subsection}{Comprendre et prédire la diversité benthique}{24}{subsection*.48}%
+\contentsline {subsection}{Rôle et inférence des interactions biotiques}{26}{subsection*.49}%
+\contentsline {subsection}{Forces et faiblesses des différentes approches}{28}{subsection*.50}%
+\contentsline {subsection}{Perspectives}{29}{subsection*.51}%
+\contentsline {section}{Bibliographie}{30}{section*.52}%
+\contentsline {section}{Annexes}{37}{section*.53}%
+\contentsline {subsection}{Liste de \emph {Species-Distriubtion Models}}{37}{subsection*.54}%
+\contentsline {subsection}{Partionnement de la variance expliquée}{38}{subsection*.55}%
+\contentsline {subsection}{Espèces de polychètes}{40}{subsection*.59}%
+\contentsline {subsection}{Réseaux reconstruits}{43}{subsection*.60}%
+\contentsline {section}{Résumé}{47}{section*.66}%

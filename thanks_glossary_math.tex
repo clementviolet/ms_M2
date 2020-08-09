@@ -1,0 +1,172 @@
+
+\hypertarget{remerciements}{%
+\section{Remerciements}\label{remerciements}}
+
+Je souhaiterai remercier en premier lieu mon encadrant principal, Martin
+Marzloff pour avoir eu la gentillesse de m'accepter en stage à ses
+côtés. Je souhaite le remercier chaleureusement, lui et Aurélien Boyé
+pour avoir patiemment répondu à mes trop nombreuses questions tout au
+long de stage et pour les abondants commentaires qui ont grandement
+amélioré la qualité de ce manuscrit. Je remercie également Olivier
+Gauthier pour les heures de discussion passées à décortiquer les modèles
+dont il est question dans ce manuscrit, ces discussions m'ont permis
+d'encore approfondir mes connaissances en statistiques. Enfin Jacques
+Grall pour avoir répondu à mes questions sur la biologie et les
+interactions que peuvent entretenir ces animaux. Pour finir, je
+souhaiterai remercier tous les experts des polychètes que j'ai
+interrogés, sans qui une grande partie de ce travail n'aurait été
+possible.
+
+\hypertarget{notations-mathuxe9matiques}{%
+\section{Notations mathématiques}\label{notations-mathuxe9matiques}}
+
+\textbf{Indices}
+
+\begin{longtable}[l]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.39\columnwidth}\raggedright
+Indice \& plage de valeurs\strut
+\end{minipage} & \begin{minipage}[b]{0.39\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(i = 1, \dots, n\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+Unité d'échantillonnage\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(j = 1, \dots, n_s\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+Espèce\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(r = 1, \dots, n_r\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+Effet aléatoire\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.39\columnwidth}\raggedright
+\(l = 1, \dots, n_l\)\strut
+\end{minipage} & \begin{minipage}[t]{0.39\columnwidth}\raggedright
+Variable latente\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Vecteurs et matrices}
+
+\begin{longtable}[l]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.34\columnwidth}\raggedright
+Matrice\strut
+\end{minipage} & \begin{minipage}[b]{0.60\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(Y, y_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Abondances observées\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(\hat{Y}, \hat{y}_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Abondances estimées\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(m\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Abondances moyennes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(X, x_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Données environnementales\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(B, \beta_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Coefficients associés à la niche environnementale\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+~\(Z, z_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Variables latentes (coordonnés de sites)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(\Lambda, \lambda_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Facteurs latents (coordonnés d'espèces)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.34\columnwidth}\raggedright
+\(\Omega, \omega_{ij}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.60\columnwidth}\raggedright
+Corrélations résiduelles interspécifiques\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Fonction et distribution statistique}
+
+\begin{longtable}[l]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.41\columnwidth}\raggedright
+Fonction / Distribution statistique\strut
+\end{minipage} & \begin{minipage}[b]{0.53\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\(g(.)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Fonction de lien d'un modèle linéaire généralisé\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\(\mathcal L\)\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Fonction de log-vraisemblance\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\(sgn(.)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Fonction signe\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\(\mathcal P(.)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Distribution de Poisson log-normale\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.41\columnwidth}\raggedright
+\(\mathcal N(.)\)\strut
+\end{minipage} & \begin{minipage}[t]{0.53\columnwidth}\raggedright
+Distribution normale\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{Divers}
+
+\begin{longtable}[l]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\raggedright
+Divers\strut
+\end{minipage} & \begin{minipage}[b]{0.75\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\(y_{.j}\)\strut
+\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright
+~Vecteur de l'abondance de l'espèce \(j\) à travers tous les sites\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\raggedright
+\(r_s\)\strut
+\end{minipage} & \begin{minipage}[t]{0.75\columnwidth}\raggedright
+Corrélation de Spearman\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
