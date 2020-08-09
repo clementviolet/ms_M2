@@ -28,8 +28,8 @@ pandoc manuscript.md -s -o rendered/$repo.tex --include-before-body=rendered/tha
 
 # Create html file
 echo "HTML document"
-cp .assets/templates/style.less rendered/css/
-pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --webtex
+cp .assets/templates/{style.less,jquery.tocify.css,bootstrap.css} rendered/css/
+pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --include-in-header=.assets/templates/tocify
 
 # Create docx file
 echo "MS Word document"
