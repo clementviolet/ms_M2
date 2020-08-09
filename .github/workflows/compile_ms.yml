@@ -59,7 +59,9 @@ jobs:
         run: |
           pandoc thanks_glossary_math.md manuscript.md  -o rendered/index.html --filter pandoc-xnos --template=.assets/templates/template.html --bibliography=./rendered/references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json --include-in-header=.assets/templates/tocify
           mkdir rendered/css/
+          mkdir rendered/js/
           cp .assets/templates/{style.less,jquery.tocify.css,bootstrap.css} rendered/css/
+          cp .assets/templates/{jquery-1.8.3.min.js,jquery-ui-1.9.1.custom.min.js,jquery.tocify.min.js} rendered/js/
       - name: Build Word document
         run: pandoc thanks_glossary_math.md manuscript.md -s -o rendered/${{ env.repo_name }}.docx --filter pandoc-xnos --bibliography=references.json --csl=.assets/templates/ecology-letters.cls --metadata-file=metadata.json
       - name: Build the pdf
